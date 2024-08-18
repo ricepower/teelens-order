@@ -1,0 +1,58 @@
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm" name="addUserForm" action="add-user-process.php" method="post">
+                    <div id="idFormGroup" class="form-group">
+                        <label for="largeInput">ID</label>
+                        <input type="text" class="form-control form-control" id="id" name="id" placeholder="User ID" />
+                        <small id="idHelp" class="form-text text-muted d-none">This field is required.</small>
+                    </div>
+                    <div id="passwordFormGroup" class="form-group">
+                        <label for="largeInput">Password</label>
+                        <input type="text" class="form-control form-control" id="password" name="password"
+                            placeholder="Password" />
+                        <small id="passwordHelp" class="form-text text-muted d-none">This field is required.</small>
+                    </div>
+                    <div id="nameFormGroup" class="form-group">
+                        <label for="largeInput">Name</label>
+                        <input type="text" class="form-control form-control" id="name" name="name"
+                            placeholder="User Name" />
+                        <small id="nameHelp" class="form-text text-muted d-none">This field is required.</small>
+                    </div>
+                    <div id="authorityFormGroup" class="form-group">
+                        <label>Authority</label>
+                        <select class="form-select" id="authority" name="authority">
+                            <option value="-">-</option>
+                            <option value="0">Admin</option>
+                            <option value="1">Customer</option>
+                        </select>
+                        <small id="authorityHelp" class="form-text text-muted d-none">This field is required.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="largeInput">Email</label>
+                        <input type="text" class="form-control form-control" id="email" name="email"
+                            placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="largeInput">Company</label>
+                        <input type="text" class="form-control form-control" id="company" name="company"
+                            placeholder="Company" />
+                    </div>
+                    <div class="form-group">
+                        <label for="largeInput">Memo</label>
+                        <input type="text" class="form-control form-control" id="memo" name="memo" placeholder="Memo" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="saveButton" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
