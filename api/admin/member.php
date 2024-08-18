@@ -1,6 +1,6 @@
 <?php
-include("checkAdmin.php");
-include("db.php");
+include("../../checkAdmin.php");
+include("../../db.php");
 
 $flag = $_POST["flag"];
 if (!isset($flag)) {
@@ -99,3 +99,4 @@ try {
 } catch (Exception $e) {
     header(trim("HTTP/1.0 500 InternalServerError"));
 }
+?>

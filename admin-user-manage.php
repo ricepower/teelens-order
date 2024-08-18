@@ -77,7 +77,7 @@ include("checkAdmin.php");
                 },
                 ajax: {
                     type: "post",
-                    url: "api.php",
+                    url: "api/admin/member.php",
                     dataType: "json",
                     data: {
                         flag: "selectAll",
@@ -164,7 +164,7 @@ include("checkAdmin.php");
 
                     $.ajax({
                         type: "post",
-                        url: "api.php",
+                        url: "api/admin/member.php",
                         dataType: "json",
                         data: {
                             flag: "createOne",
@@ -215,7 +215,7 @@ include("checkAdmin.php");
 
                     $.ajax({
                         type: "post",
-                        url: "api.php",
+                        url: "api/admin/member.php",
                         dataType: "json",
                         data: {
                             flag: "updateOne",
@@ -246,7 +246,7 @@ include("checkAdmin.php");
                 row = userTable.row(this).data();
                 $.ajax({
                     type: "post",
-                    url: "api.php",
+                    url: "api/admin/member.php",
                     dataType: "json",
                     data: {
                         flag: "selectOne",
