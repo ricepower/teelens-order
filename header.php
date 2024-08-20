@@ -1,13 +1,9 @@
-<?php 
-// session_start();
-echo "value: ".session_id()."<br/>";
-echo "id: ".$_SESSION["id"]."<br/>";
-echo "name: ".$_SESSION["name"]."<br/>";
-echo "auth: ".$_SESSION["auth"]."<br/>";
-
-if (empty($_SESSION)) {
-    header("location: signin.php");
-}
+<?php
+echo "value: " . session_id() . "<br/>";
+echo "id: " . $_SESSION["id"] . "<br/>";
+echo "name: " . $_SESSION["name"] . "<br/>";
+echo "auth: " . $_SESSION["auth"] . "<br/>";
+echo "session_status: " . session_status() . "<br/>";
 ?>
 
 <div class="main-header">

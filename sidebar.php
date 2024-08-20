@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if (empty($_SESSION)) {
+    header("location: signin.php");
+}
+?>
 <!-- Sidebar -->
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">

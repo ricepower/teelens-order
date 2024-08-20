@@ -1,4 +1,7 @@
-<?php 
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 session_unset();
 session_destroy();
 ?>
@@ -24,7 +27,7 @@ session_destroy();
                 <input type="password" id="password" name="password" placeholder="Password">
                 <p id="errorMsg" style="color: #f25961 !important; margin: 0; display: none;">Please enter ID or Password</p>
                 <a href="#">Forget Your Password? 아이디 기억하기 넣기</a>
-                <button type="button">Sign In</button>        
+                <button type="button">Sign In</button>
             </form>
         </div>
         <div class="logo-container">
@@ -50,16 +53,36 @@ session_destroy();
                 if (!id || !password) {
                     $("#errorMsg").show();
                     return false;
-                } else {
-                    $("form").submit();
                 }
+
+                $.ajax({
+                    type: "post",
+                    url: "api/auth.php",
+                    dataType: "json",
+                    data: {
+                        flag: "verify",
+                        id: id,
+                        password: password,
+                    },
+                    success: function(result) {
+                        location.href = "starter-template-sample.php";
+                    },
+                    error: function(result, status, error) {
+                        $("#errorMsg").text("Fail to signin. Please confirm your ID or Password.");
+                        $("#errorMsg").show();
+                    }
+                });
             });
         });
     </script>
-    <?php 
-    var_dump($_SESSION);
-    var_dump(isset($_SESSION));
-    var_dump(empty($_SESSION));
+    <?php
+    echo var_dump($_SESSION) . "<br/>";
+    echo var_dump(isset($_SESSION)) . "<br/>";
+    echo var_dump(empty($_SESSION)) . "<br/>";
+    echo var_dump(session_status()) . "<br/>";
+    echo var_dump(PHP_SESSION_DISABLED) . "<br/>";
+    echo var_dump(PHP_SESSION_NONE) . "<br/>";
+    echo var_dump(PHP_SESSION_ACTIVE) . "<br/>";
     ?>
 </body>
 

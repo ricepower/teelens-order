@@ -18,8 +18,10 @@ try {
                 $member = mysqli_fetch_assoc($result);
                 unset($member["password"]);
                 echo json_encode($member);
+                exit();
             } else {
                 echo "{}";
+                exit();
             }
             break;
         case "selectAll":
@@ -39,6 +41,7 @@ try {
             }
             $aa['data'] = $resultArr;
             echo json_encode($aa);
+            exit();
             break;
         case "createOne":
             $id = mysqli_real_escape_string($conn, trim($_POST["id"]));
@@ -54,6 +57,7 @@ try {
 
             if (mysqli_num_rows($result) > 0) {
                 header(trim("HTTP/1.0 400 Existing user"));
+                exit();
                 break;
             }
 
@@ -63,8 +67,10 @@ try {
 
             if ($insertResult) {
                 echo http_response_code(200);
+                exit();
             } else {
                 header(trim("HTTP/1.0 500 InternalServerError"));
+                exit();
             }
             break;
         case "updateOne":
@@ -88,15 +94,19 @@ try {
 
             if ($updateresult) {
                 echo http_response_code(200);
+                exit();
             } else {
                 header(trim("HTTP/1.0 500 InternalServerError"));
+                exit();
             }
             break;
         default:
             header(trim("HTTP/1.0 500 InternalServerError"));
+            exit();
             break;
     }
 } catch (Exception $e) {
     header(trim("HTTP/1.0 500 InternalServerError"));
+    exit();
 }
 ?>
