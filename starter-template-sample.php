@@ -4,7 +4,7 @@
 <head>
   <?php include('head.php') ?>
   <link rel="stylesheet" href="assets/css/datatables.min.css" />
-
+  <link rel="stylesheet" href="assets/css/gijgo.css" />
 </head>
 
 <body>
@@ -23,7 +23,31 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <div class="d-flex align-items-center">
+
+                  <div class="row d-flex">
+                    <div class="col-md-2">
+                      <input id="datepicker1" />
+                    </div>
+                    <div class="col-md-2">
+                      <input id="datepicker2" />
+                    </div>
+                    <div class="col-md-4 ms-auto">
+                      <button id="addButton" class="btn btn-primary btn-round ms-auto">
+                        <i class="fa fa-plus"></i>
+                        Add Row1
+                      </button>
+                      <button id="addButton" class="btn btn-primary btn-round ms-auto">
+                        <i class="fa fa-plus"></i>
+                        Add Row2
+                      </button>
+                      <button id="addButton" class="btn btn-primary btn-round ms-auto float-end">
+                        <i class="fa fa-plus"></i>
+                        Add Row3
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- <div class="d-flex align-items-center">
                     <button id="addButton" class="btn btn-primary btn-round ms-auto">
                       <i class="fa fa-plus"></i>
                       kkk
@@ -40,7 +64,8 @@
                       <i class="fa fa-plus"></i>
                       Add Row123213
                     </button>
-                  </div>
+                  </div> -->
+
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -110,6 +135,8 @@
   <script src="assets/js/plugin/datatables/jszip.min.js"></script>
   <script src="assets/js/plugin/datatables/vfs_fonts.js"></script>
   <script src="assets/js/plugin/datatables/buttons.html5.min.js"></script>
+
+  <script src="assets/js/plugin/datepicker/gijgo.min.js"></script>
   <script>
     $(document).ready(function() {
       $("#orderTable").DataTable({
@@ -140,6 +167,15 @@
 
       $("#addButton").click(function() {
         console.log('test');
+        console.log(picker1.value());
+      });
+
+      let picker1 = $("#datepicker1").datepicker({
+        uiLibrary: "bootstrap5"
+      });
+      
+      let picker2 = $("#datepicker2").datepicker({
+        uiLibrary: "bootstrap5"
       });
     });
   </script>
