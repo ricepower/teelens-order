@@ -1,5 +1,7 @@
-<?php 
-session_start();
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (empty($_SESSION)) {
     header("location: signin.php");
 }
@@ -30,18 +32,6 @@ if (empty($_SESSION)) {
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Customer</h4>
-                </li>
-                <li class="nav-item">
-                    <a href="../../documentation/index.html">
-                        <i class="fas fa-file-alt"></i>
-                        <p>My Order List</p>
-                    </a>
-                </li>
                 <?php
                 echo $_SESSION["auth"] === "0" ?
                     '
@@ -52,7 +42,7 @@ if (empty($_SESSION)) {
                         <h4 class="text-section">Administrator</h4>
                     </li>
                     <li class="nav-item">
-                        <a href="../../documentation/index.html">
+                        <a href="admin-user-manage.php">
                             <i class="fas fa-file-alt"></i>
                             <p>Order List</p>
                         </a>
@@ -66,6 +56,18 @@ if (empty($_SESSION)) {
                     '
                     : null;
                 ?>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Customer</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="order.php">
+                        <i class="fas fa-file-alt"></i>
+                        <p>My Order List</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

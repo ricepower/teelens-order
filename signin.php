@@ -65,7 +65,7 @@ session_destroy();
                         password: password,
                     },
                     success: function(result) {
-                        location.href = "starter-template-sample.php";
+                        location.href = "order.php";
                     },
                     error: function(result, status, error) {
                         $("#errorMsg").text("Fail to signin. Please confirm your ID or Password.");

@@ -1,0 +1,364 @@
+<div id="orderModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-xl"><!--  style="max-width: 80%;" -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="largeInput">Order name</label>
+                            <input type="text" class="form-control form-control" id="id" name="id" placeholder="Order name" />
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Type</label>
+                            <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" checked />
+                                    <span class="selectgroup-button">Free Form<br />Progressive</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="100" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Bifocal<br />Trifocal</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="150" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Single<br />Vision</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-1 my-auto pt-4 text-center">
+                        <h3>R</h3>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">SPH</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">CYL</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">AXIS</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">ADD</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">DIA</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">PRISM</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1">
+                        <div class="form-group text-center p-0">
+                            <label for="largeInput">QTY</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1 my-auto text-center">
+                        <h3>L</h3>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1">
+                        <div class="form-group text-center p-0">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">HBOX</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">VBOX</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">EDBOX</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">DBL</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">SEG.H(R)</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">PD(R)</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">PD(L)</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">PANTO</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">ZTILT</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group text-center">
+                            <label for="largeInput">INSET</label>
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Design</label>
+                            <select class="form-select" id="authority" name="authority">
+                                <option value="-">-</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Index</label>
+                            <select class="form-select" id="authority" name="authority">
+                                <option value="-">-</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Color</label>
+                            <select class="form-select" id="authority" name="authority">
+                                <option value="-">-</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Corridor</label>
+                            <select class="form-select" id="authority" name="authority">
+                                <option value="-">-</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="form-label">FRAME</label>
+                            <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" checked />
+                                    <span class="selectgroup-button">None</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Full</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="100" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Rimless</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="150" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Semi-Rimless</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Coating</label>
+                            <select class="form-select" id="authority" name="authority">
+                                <option value="-">-</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="form-label">UV add</label>
+                            <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" checked />
+                                    <span class="selectgroup-button">None</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">ADD</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">TINT COLOR</label>
+                            <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" checked />
+                                    <span class="selectgroup-button">None</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">One tone</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Two tone</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">MIRROR</label>
+                            <div class="selectgroup w-100">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" checked />
+                                    <span class="selectgroup-button">None</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Full</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="value" value="50" class="selectgroup-input" />
+                                    <span class="selectgroup-button">Half</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="text" class="form-control form-control" id="smallInput" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="comment">Order Memo</label>
+                            <textarea class="form-control" id="comment" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-1 text-end my-auto">
+                        <h3>Quntity: </h3>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-floating form-floating-custom mb-3">
+                            <input type="text" class="form-control text-center" style="font-size: 20px; padding-right: 0px;" id="floatingInput" placeholder="1" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="saveButton" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
