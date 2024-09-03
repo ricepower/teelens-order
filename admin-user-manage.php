@@ -182,6 +182,7 @@ include("checkAdmin.php");
                             $("#modal").modal('hide');
                         },
                         error: function(result, status, error) {
+                            console.log(result);
                             alert(error);
                         }
                     });

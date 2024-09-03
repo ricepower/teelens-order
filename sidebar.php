@@ -42,7 +42,7 @@ if (empty($_SESSION)) {
                         <h4 class="text-section">Administrator</h4>
                     </li>
                     <li class="nav-item">
-                        <a href="admin-user-manage.php">
+                        <a href="order.php">
                             <i class="fas fa-file-alt"></i>
                             <p>Order List</p>
                         </a>

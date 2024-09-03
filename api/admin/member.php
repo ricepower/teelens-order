@@ -62,7 +62,7 @@ try {
             }
 
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $insertSql = "INSERT INTO member VALUES('', '$id', '$hash', '$name', '$authority', '$email', '$company', '$memo')";
+            $insertSql = "INSERT INTO member(`idx`, `id`, `password`, `name`, `auth`, `email`, `company`, `memo`) VALUES('', '$id', '$hash', '$name', '$authority', '$email', '$company', '$memo')";
             $insertResult = mysqli_query($conn, $insertSql);
 
             if ($insertResult) {

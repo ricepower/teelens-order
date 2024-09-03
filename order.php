@@ -12,6 +12,13 @@ if (empty($_SESSION)) {
     <?php include('head.php') ?>
     <link rel="stylesheet" href="assets/css/datatables.min.css" />
     <link rel="stylesheet" href="assets/css/gijgo.css" />
+    
+    <style>
+        #orderModal .form-control {
+            border-width: 1px;
+            border-color: #d8d9dd;
+        }
+    </style>
 </head>
 
 <body>
@@ -66,14 +73,13 @@ if (empty($_SESSION)) {
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="orderTable" class="display cell-border nowrap">
+                                        <table id="orderTable" class="cell-border nowrap">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Name</th>
                                                     <th>Type</th>
-                                                    <th>State</th>
-
+                                                    <th>Coating</th>
                                                     <th>R&L</th>
                                                     <th>SPH</th>
                                                     <th>CYL</th>
@@ -82,31 +88,7 @@ if (empty($_SESSION)) {
                                                     <th>DIA</th>
                                                     <th>PRISM</th>
                                                     <th>QTY</th>
-                                                    
-                                                    <th>HBOX</th>
-                                                    <th>VBOX</th>
-                                                    <th>EDBOX</th>
-                                                    <th>DBL</th>
-                                                    <th>SEG.H(R)</th>
-                                                    <th>SEG.H(L)</th>
-
-                                                    <th>PD(R)</th>
-                                                    <th>PD(L)</th>
-                                                    <th>PANTO</th>
-                                                    <th>ZTILT</th>
-                                                    <th>INSET</th>
-
-                                                    <th>Design</th>
-                                                    <th>Index</th>
-                                                    <th>Color</th>
-                                                    <th>Corridor</th>
-
-                                                    <th>Tint Color</th>
-                                                    <th>Tint Color Memo</th>
-                                                    <th>Mirror</th>
-                                                    <th>Mirror Memo</th>
-
-                                                    <th>Order Memo</th>
+                                                    <th>State</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -114,8 +96,7 @@ if (empty($_SESSION)) {
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur</td>
                                                     <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-danger">Orderd</span></td>
-                                                    
+                                                    <td>Premium HMC</td>
                                                     <td>R</td>
                                                     <td>1.0</td>
                                                     <td>2.0</td>
@@ -124,78 +105,28 @@ if (empty($_SESSION)) {
                                                     <td>1.0</td>
                                                     <td>1.0</td>
                                                     <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
+                                                    <td><span class="badge badge-danger">Orderd</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
                                                     <td>Free Form Progressive</td>
+                                                    <td>Premium HMC</td>
+                                                    <td>L</td>
+                                                    <td>1.0</td>
+                                                    <td>2.0</td>
+                                                    <td>3.0</td>
+                                                    <td>1.0</td>
+                                                    <td>1.0</td>
+                                                    <td>1.0</td>
+                                                    <td>2</td>
                                                     <td><span class="badge badge-warning">Orderd</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
                                                     <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-primary">Processing</span></td>
-                                                    
+                                                    <td>Premium HMC</td>
                                                     <td>L</td>
                                                     <td>1.0</td>
                                                     <td>2.0</td>
@@ -204,38 +135,13 @@ if (empty($_SESSION)) {
                                                     <td>1.0</td>
                                                     <td>1.0</td>
                                                     <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
+                                                    <td><span class="badge badge-warning">Orderd</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
                                                     <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
+                                                    <td>Premium HMC</td>
                                                     <td>L</td>
                                                     <td>1.0</td>
                                                     <td>2.0</td>
@@ -244,38 +150,13 @@ if (empty($_SESSION)) {
                                                     <td>1.0</td>
                                                     <td>1.0</td>
                                                     <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
+                                                    <td><span class="badge badge-warning">Orderd</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
                                                     <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
+                                                    <td>Premium HMC</td>
                                                     <td>L</td>
                                                     <td>1.0</td>
                                                     <td>2.0</td>
@@ -284,38 +165,13 @@ if (empty($_SESSION)) {
                                                     <td>1.0</td>
                                                     <td>1.0</td>
                                                     <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
+                                                    <td><span class="badge badge-warning">Orderd</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
                                                     <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
+                                                    <td>Premium HMC</td>
                                                     <td>L</td>
                                                     <td>1.0</td>
                                                     <td>2.0</td>
@@ -324,591 +180,7 @@ if (empty($_SESSION)) {
                                                     <td>1.0</td>
                                                     <td>1.0</td>
                                                     <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td><span class="badge badge-success">Completed</span></td>
-                                                    
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-
-                                                    <td>60</td>
-                                                    <td>90</td>
-                                                    <td>11</td>
-                                                    <td>21</td>
-                                                    <td>SET</td>
-
-                                                    <td>Endless Steady Intermediate</td>
-                                                    <td>1.50 Sunfilter Spin coating</td>
-                                                    <td>Brown</td>
-                                                    <td>Premium USH</td>
-
-                                                    <td>One tone</td>
-                                                    <td></td>
-                                                    <td>None</td>
-                                                    <td></td>
-
-                                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero, dolore adipisci dolorem soluta non libero nulla deserunt ullam veniam pariatur impedit neque illum similique nemo, nesciunt accusamus? Fuga, reiciendis velit.</td>
+                                                    <td><span class="badge badge-warning">Orderd</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1003,13 +275,9 @@ if (empty($_SESSION)) {
                 //         data: "memo"
                 //     },
                 // ],
-                render: function (data, type, full, meta) {
-                    console.log(data);
-                    // var color = full.logan_status.displayColor;
-                    // $("td:eq(1)").css('background', color);
-                    // $("#orderTable").css("margin-top", "0px");
-                    return data;
-                },
+                rowCallback: function(row, data) {
+                    
+                }
             });
 
             $("#orderButton").click(function() {
