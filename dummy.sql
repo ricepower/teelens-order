@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 24-09-08 10:20
+-- 생성 시간: 24-10-30 11:35
 -- 서버 버전: 10.4.32-MariaDB
 -- PHP 버전: 8.2.12
 
@@ -516,20 +516,6 @@ CREATE TABLE `order` (
   `idx` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `type_idx` int(11) DEFAULT NULL,
-  `r_sph` varchar(255) DEFAULT NULL,
-  `r_cyl` varchar(255) DEFAULT NULL,
-  `r_axis` varchar(255) DEFAULT NULL,
-  `r_add` varchar(255) DEFAULT NULL,
-  `r_dia` varchar(255) DEFAULT NULL,
-  `r_prism` varchar(255) DEFAULT NULL,
-  `r_qty` varchar(255) DEFAULT NULL,
-  `l_sph` varchar(255) DEFAULT NULL,
-  `l_cyl` varchar(255) DEFAULT NULL,
-  `l_axis` varchar(255) DEFAULT NULL,
-  `l_add` varchar(255) DEFAULT NULL,
-  `l_dia` varchar(255) DEFAULT NULL,
-  `l_prism` varchar(255) DEFAULT NULL,
-  `l_qty` varchar(255) DEFAULT NULL,
   `hbox` varchar(255) DEFAULT NULL,
   `vbox` varchar(255) DEFAULT NULL,
   `edbox` varchar(255) DEFAULT NULL,
@@ -556,6 +542,40 @@ CREATE TABLE `order` (
   `member_idx` varchar(255) DEFAULT NULL,
   `order_date` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `order_left_spec`
+--
+
+CREATE TABLE `order_left_spec` (
+  `idx` int(11) NOT NULL,
+  `order_idx` int(11) NOT NULL,
+  `l_sph` varchar(255) DEFAULT NULL,
+  `l_cyl` varchar(255) DEFAULT NULL,
+  `l_add` varchar(255) DEFAULT NULL,
+  `l_dia` varchar(255) DEFAULT NULL,
+  `l_prism` varchar(255) DEFAULT NULL,
+  `l_qty` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `order_right_spec`
+--
+
+CREATE TABLE `order_right_spec` (
+  `idx` int(11) NOT NULL,
+  `order_idx` int(11) NOT NULL,
+  `r_sph` varchar(255) DEFAULT NULL,
+  `r_cyl` varchar(255) DEFAULT NULL,
+  `r_add` varchar(255) DEFAULT NULL,
+  `r_dia` varchar(255) DEFAULT NULL,
+  `r_prism` varchar(255) DEFAULT NULL,
+  `r_qty` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -614,6 +634,12 @@ ALTER TABLE `order`
   ADD PRIMARY KEY (`idx`);
 
 --
+-- 테이블의 인덱스 `order_right_spec`
+--
+ALTER TABLE `order_right_spec`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- 테이블의 인덱스 `type`
 --
 ALTER TABLE `type`
@@ -651,6 +677,12 @@ ALTER TABLE `member`
 -- 테이블의 AUTO_INCREMENT `order`
 --
 ALTER TABLE `order`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 테이블의 AUTO_INCREMENT `order_right_spec`
+--
+ALTER TABLE `order_right_spec`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
 
 --
