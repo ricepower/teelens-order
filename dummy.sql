@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 24-10-30 11:35
+-- 생성 시간: 24-11-03 14:37
 -- 서버 버전: 10.4.32-MariaDB
 -- PHP 버전: 8.2.12
 
@@ -24,7 +24,91 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `color`
+-- 테이블 구조 `member`
+--
+
+CREATE TABLE `member` (
+  `idx` int(11) NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `auth` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `company` varchar(255) DEFAULT NULL,
+  `memo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `member`
+--
+
+INSERT INTO `member` (`idx`, `id`, `password`, `name`, `auth`, `email`, `company`, `memo`) VALUES
+(1, 'admin', '$2y$10$AEu8mIWoewh6Jmvc/uHZyOCcOkMlUGfeIierXK9t./QJ7xWKki3La', 'teelens', '0', 'teelens@gmail.com', 'teelens', ''),
+(37, '123', '$2y$10$pn0z4bzEoBnGEWX30PF4EOBAdSYROLCRHn0vOWnvXCO4Elzm24hVu', '12', '1', '12123', 'ㅁㅁ', 'ㅠㅠ'),
+(38, '13423', '$2y$10$lGy54K3wLpVCLZVFd.rjROyi0MeRpPkbg6DRHzJSAPi.Lk3SRCxdi', '424123432', '0', '123', 'sdas', ''),
+(39, '11', '$2y$10$aiRiCwoy44Cb20zTIvDduOsPlO2DPA0LY2nZB.EjJmncn5rqZvG3C', '11', '1', '', '', ''),
+(40, '22', '$2y$10$ynpQ5FgdYYLpx7UeqqYSA.NRlJYZ6153SlEBSDHV6XuJTqa034UcW', '22', '0', '213213', '123213', '213213'),
+(41, '133', '$2y$10$QaaSuLp6vFupn.ABrAGD8.LtELuACNtntkb5C8FrAdsXRSa58E4BW', '333123', '1', '333', '333', '333'),
+(42, 'd', '$2y$10$tUT/SqjBb2e/nET95NkTKOc/OyQOHU3Q7X2RwaWjJ3CdZgTJl.WB2', 'd', '1', '', '', ''),
+(43, '767868', '$2y$10$1hriGirFiASRAbBNpc0.eOcFVJrBlaTas86j5KcMqqjF.zJFFSDu2', '6787658', '1', '5676547', '657567', ''),
+(44, 'sdafdsafasfxc2w', '$2y$10$jI6wjUp7v391fpu6gSwgK.WkTUIsv0/vH.ymy7B/mQQs52C1Uy.0.', '12321', '1', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `order`
+--
+
+CREATE TABLE `order` (
+  `idx` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `type_idx` int(11) DEFAULT NULL,
+  `hbox` varchar(255) DEFAULT NULL,
+  `vbox` varchar(255) DEFAULT NULL,
+  `edbox` varchar(255) DEFAULT NULL,
+  `dbl` varchar(255) DEFAULT NULL,
+  `r_segh` varchar(255) DEFAULT NULL,
+  `r_pd` varchar(255) DEFAULT NULL,
+  `l_pd` varchar(255) DEFAULT NULL,
+  `panto` varchar(255) DEFAULT NULL,
+  `ztilt` varchar(255) DEFAULT NULL,
+  `inset` varchar(255) DEFAULT NULL,
+  `design_idx` int(11) DEFAULT NULL,
+  `index_idx` int(11) DEFAULT NULL,
+  `color_idx` int(11) DEFAULT NULL,
+  `corridor` varchar(255) DEFAULT NULL,
+  `frame` varchar(255) DEFAULT NULL,
+  `coating` varchar(255) DEFAULT NULL,
+  `uv` varchar(255) DEFAULT NULL,
+  `tint_color` varchar(255) DEFAULT NULL,
+  `tint_color_desc` varchar(255) DEFAULT NULL,
+  `mirror` varchar(255) DEFAULT NULL,
+  `mirror_desc` varchar(255) DEFAULT NULL,
+  `memo` varchar(255) DEFAULT NULL,
+  `quntity` varchar(255) DEFAULT NULL,
+  `member_idx` varchar(255) NOT NULL,
+  `order_date` varchar(255) DEFAULT NULL,
+  `state` varchar(255) NOT NULL DEFAULT 'ordered'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `order`
+--
+
+INSERT INTO `order` (`idx`, `name`, `type_idx`, `hbox`, `vbox`, `edbox`, `dbl`, `r_segh`, `r_pd`, `l_pd`, `panto`, `ztilt`, `inset`, `design_idx`, `index_idx`, `color_idx`, `corridor`, `frame`, `coating`, `uv`, `tint_color`, `tint_color_desc`, `mirror`, `mirror_desc`, `memo`, `quntity`, `member_idx`, `order_date`, `state`) VALUES
+(2, 'asdfsaf', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '', NULL, ''),
+(5, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),
+(8, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),
+(9, 'qqq', 2, 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '', NULL, ''),
+(10, 'ㅁㅁㅁㅁ', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', 'admin', '2024-11-03 11:04:21', 'ordered'),
+(11, 'ㅋㅋㅋ', 2, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 11:05:41', 'ordered'),
+(12, 'ㅅㅅㅅ', 3, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 11:06:02', 'ordered'),
+(13, 'xxx', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 14:27:00', 'ordered');
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `order_color`
 --
 
 CREATE TABLE `order_color` (
@@ -37,7 +121,7 @@ CREATE TABLE `order_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 테이블의 덤프 데이터 `color`
+-- 테이블의 덤프 데이터 `order_color`
 --
 
 INSERT INTO `order_color` (`idx`, `type_idx`, `design_idx`, `index_idx`, `name`, `sort`) VALUES
@@ -231,7 +315,7 @@ INSERT INTO `order_color` (`idx`, `type_idx`, `design_idx`, `index_idx`, `name`,
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `design`
+-- 테이블 구조 `order_design`
 --
 
 CREATE TABLE `order_design` (
@@ -242,7 +326,7 @@ CREATE TABLE `order_design` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 테이블의 덤프 데이터 `design`
+-- 테이블의 덤프 데이터 `order_design`
 --
 
 INSERT INTO `order_design` (`idx`, `type_idx`, `name`, `sort`) VALUES
@@ -282,7 +366,7 @@ INSERT INTO `order_design` (`idx`, `type_idx`, `name`, `sort`) VALUES
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `index`
+-- 테이블 구조 `order_index`
 --
 
 CREATE TABLE `order_index` (
@@ -294,7 +378,7 @@ CREATE TABLE `order_index` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 테이블의 덤프 데이터 `index`
+-- 테이블의 덤프 데이터 `order_index`
 --
 
 INSERT INTO `order_index` (`idx`, `design_idx`, `type_idx`, `name`, `sort`) VALUES
@@ -477,108 +561,29 @@ INSERT INTO `order_index` (`idx`, `design_idx`, `type_idx`, `name`, `sort`) VALU
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `member`
+-- 테이블 구조 `order_lens_spec`
 --
 
-CREATE TABLE `member` (
-  `idx` int(11) NOT NULL,
-  `id` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `auth` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `company` varchar(255) DEFAULT NULL,
-  `memo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 테이블의 덤프 데이터 `member`
---
-
-INSERT INTO `member` (`idx`, `id`, `password`, `name`, `auth`, `email`, `company`, `memo`) VALUES
-(1, 'admin', '$2y$10$AEu8mIWoewh6Jmvc/uHZyOCcOkMlUGfeIierXK9t./QJ7xWKki3La', 'teelens', '0', 'teelens@gmail.com', 'teelens', ''),
-(37, '123', '$2y$10$pn0z4bzEoBnGEWX30PF4EOBAdSYROLCRHn0vOWnvXCO4Elzm24hVu', '12', '1', '12123', 'ㅁㅁ', 'ㅠㅠ'),
-(38, '13423', '$2y$10$lGy54K3wLpVCLZVFd.rjROyi0MeRpPkbg6DRHzJSAPi.Lk3SRCxdi', '424123432', '0', '123', 'sdas', ''),
-(39, '11', '$2y$10$aiRiCwoy44Cb20zTIvDduOsPlO2DPA0LY2nZB.EjJmncn5rqZvG3C', '11', '1', '', '', ''),
-(40, '22', '$2y$10$ynpQ5FgdYYLpx7UeqqYSA.NRlJYZ6153SlEBSDHV6XuJTqa034UcW', '22', '0', '213213', '123213', '213213'),
-(41, '133', '$2y$10$QaaSuLp6vFupn.ABrAGD8.LtELuACNtntkb5C8FrAdsXRSa58E4BW', '333123', '1', '333', '333', '333'),
-(42, 'd', '$2y$10$tUT/SqjBb2e/nET95NkTKOc/OyQOHU3Q7X2RwaWjJ3CdZgTJl.WB2', 'd', '1', '', '', ''),
-(43, '767868', '$2y$10$1hriGirFiASRAbBNpc0.eOcFVJrBlaTas86j5KcMqqjF.zJFFSDu2', '6787658', '1', '5676547', '657567', ''),
-(44, 'sdafdsafasfxc2w', '$2y$10$jI6wjUp7v391fpu6gSwgK.WkTUIsv0/vH.ymy7B/mQQs52C1Uy.0.', '12321', '1', '', '', '');
-
--- --------------------------------------------------------
-
---
--- 테이블 구조 `order`
---
-
-CREATE TABLE `order` (
-  `idx` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `type_idx` int(11) DEFAULT NULL,
-  `hbox` varchar(255) DEFAULT NULL,
-  `vbox` varchar(255) DEFAULT NULL,
-  `edbox` varchar(255) DEFAULT NULL,
-  `dbl` varchar(255) DEFAULT NULL,
-  `r_segh` varchar(255) DEFAULT NULL,
-  `r_pd` varchar(255) DEFAULT NULL,
-  `l_pd` varchar(255) DEFAULT NULL,
-  `panto` varchar(255) DEFAULT NULL,
-  `ztilt` varchar(255) DEFAULT NULL,
-  `inset` varchar(255) DEFAULT NULL,
-  `design_idx` int(11) DEFAULT NULL,
-  `index_idx` int(11) DEFAULT NULL,
-  `color_idx` int(11) DEFAULT NULL,
-  `corridor` varchar(255) DEFAULT NULL,
-  `frame` varchar(255) DEFAULT NULL,
-  `coating` varchar(255) DEFAULT NULL,
-  `uv` varchar(255) DEFAULT NULL,
-  `tint_color` varchar(255) DEFAULT NULL,
-  `tint_desc` varchar(255) DEFAULT NULL,
-  `mirror` varchar(255) DEFAULT NULL,
-  `mirror_desc` varchar(255) DEFAULT NULL,
-  `memo` varchar(255) DEFAULT NULL,
-  `quntity` varchar(255) DEFAULT NULL,
-  `member_idx` varchar(255) DEFAULT NULL,
-  `order_date` varchar(255) DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- 테이블 구조 `order_left_spec`
---
-
-CREATE TABLE `order_left_spec` (
+CREATE TABLE `order_lens_spec` (
   `idx` int(11) NOT NULL,
   `order_idx` int(11) NOT NULL,
-  `l_sph` varchar(255) DEFAULT NULL,
-  `l_cyl` varchar(255) DEFAULT NULL,
-  `l_axis` varchar(255) DEFAULT NULL,
-  `l_add` varchar(255) DEFAULT NULL,
-  `l_dia` varchar(255) DEFAULT NULL,
-  `l_prism` varchar(255) DEFAULT NULL,
-  `l_qty` varchar(255) DEFAULT NULL
+  `LR` varchar(255) DEFAULT NULL,
+  `sph` varchar(255) DEFAULT NULL,
+  `cyl` varchar(255) DEFAULT NULL,
+  `axis` varchar(255) DEFAULT NULL,
+  `add` varchar(255) DEFAULT NULL,
+  `dia` varchar(255) DEFAULT NULL,
+  `prism` varchar(255) DEFAULT NULL,
+  `qty` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- 테이블 구조 `order_right_spec`
+-- 테이블의 덤프 데이터 `order_lens_spec`
 --
 
-CREATE TABLE `order_right_spec` (
-  `idx` int(11) NOT NULL,
-  `order_idx` int(11) NOT NULL,
-  `r_sph` varchar(255) DEFAULT NULL,
-  `r_cyl` varchar(255) DEFAULT NULL,
-  `r_axis` varchar(255) DEFAULT NULL,
-  `r_add` varchar(255) DEFAULT NULL,
-  `r_dia` varchar(255) DEFAULT NULL,
-  `r_prism` varchar(255) DEFAULT NULL,
-  `r_qty` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `order_lens_spec` (`idx`, `order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES
+(1, 13, 'R', '1', '321', '3', '', '', '123', ''),
+(2, 13, 'L', '213', '12', '', '', '123', '21', '');
 
 -- --------------------------------------------------------
 
@@ -606,24 +611,6 @@ INSERT INTO `type` (`idx`, `name`, `sort`) VALUES
 --
 
 --
--- 테이블의 인덱스 `order_color`
---
-ALTER TABLE `order_color`
-  ADD PRIMARY KEY (`idx`);
-
---
--- 테이블의 인덱스 `design`
---
-ALTER TABLE `order_design`
-  ADD PRIMARY KEY (`idx`);
-
---
--- 테이블의 인덱스 `index`
---
-ALTER TABLE `order_index`
-  ADD PRIMARY KEY (`idx`);
-
---
 -- 테이블의 인덱스 `member`
 --
 ALTER TABLE `member`
@@ -636,10 +623,29 @@ ALTER TABLE `order`
   ADD PRIMARY KEY (`idx`);
 
 --
--- 테이블의 인덱스 `order_right_spec`
+-- 테이블의 인덱스 `order_color`
 --
-ALTER TABLE `order_right_spec`
+ALTER TABLE `order_color`
   ADD PRIMARY KEY (`idx`);
+
+--
+-- 테이블의 인덱스 `order_design`
+--
+ALTER TABLE `order_design`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- 테이블의 인덱스 `order_index`
+--
+ALTER TABLE `order_index`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- 테이블의 인덱스 `order_lens_spec`
+--
+ALTER TABLE `order_lens_spec`
+  ADD PRIMARY KEY (`idx`),
+  ADD KEY `idx` (`idx`);
 
 --
 -- 테이블의 인덱스 `type`
@@ -652,24 +658,6 @@ ALTER TABLE `type`
 --
 
 --
--- 테이블의 AUTO_INCREMENT `order_color`
---
-ALTER TABLE `order_color`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
-
---
--- 테이블의 AUTO_INCREMENT `design`
---
-ALTER TABLE `design`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- 테이블의 AUTO_INCREMENT `index`
---
-ALTER TABLE `index`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
-
---
 -- 테이블의 AUTO_INCREMENT `member`
 --
 ALTER TABLE `member`
@@ -679,13 +667,13 @@ ALTER TABLE `member`
 -- 테이블의 AUTO_INCREMENT `order`
 --
 ALTER TABLE `order`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- 테이블의 AUTO_INCREMENT `order_right_spec`
+-- 테이블의 AUTO_INCREMENT `order_lens_spec`
 --
-ALTER TABLE `order_right_spec`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order_lens_spec`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 테이블의 AUTO_INCREMENT `type`

@@ -64,13 +64,12 @@ try {
             $orderIdx = mysqli_insert_id($conn);
 
             if ($orderRSPH != "" || $orderRCYL != "" || $orderRAXIS != "" || $orderRADD != "" || $orderRDIA != "" || $orderRPRISM != "" || $orderRQTY != "") {
-                $insertOrderRightSpecSql = "INSERT INTO order_right_spec(`order_idx`, `r_sph`, `r_cyl`, `r_axis`, `r_add`, `r_dia`, `r_prism`, `r_qty`) VALUES('$orderIdx', '$orderRSPH', '$orderRCYL', '$orderRAXIS', '$orderRADD', '$orderRDIA', '$orderRPRISM', '$orderRQTY')";
-                // echo $insertOrderRightSpecSql;
+                $insertOrderRightSpecSql = "INSERT INTO order_lens_spec(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'R', '$orderRSPH', '$orderRCYL', '$orderRAXIS', '$orderRADD', '$orderRDIA', '$orderRPRISM', '$orderRQTY')";
                 $insertOrderRightSpecResult = mysqli_query($conn, $insertOrderRightSpecSql);
             }
 
             if ($orderLSPH != "" || $orderLCYL != "" || $orderLAXIS != "" || $orderLADD != "" || $orderLDIA != "" || $orderLPRISM != "" || $orderQTY != "") {
-                $insertOrderLeftSpecSql = "INSERT INTO order_left_spec(`order_idx`, `l_sph`, `l_cyl`, `l_axis`, `l_add`, `l_dia`, `l_prism`, `l_qty`) VALUES('$orderIdx', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderQTY')";
+                $insertOrderLeftSpecSql = "INSERT INTO order_lens_spec(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'L', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderQTY')";
                 $insertOrderLeftSpecResult = mysqli_query($conn, $insertOrderLeftSpecSql);
             }
 
@@ -123,7 +122,7 @@ try {
                 $types .= "s";
             }
 
-            $sql = "SELECT * FROM `order` WHERE member_idx = ?";
+            $sql = "SELECT * FROM `order_lens_spec` LEFT JOIN `order` ON `order_lens_spec`.`order_idx` = `order`.`idx` WHERE `order`.`member_idx` = ?";
             if (!empty($conditions)) {
                 $sql .= " AND " . implode(" AND ", $conditions);
             }
@@ -139,7 +138,10 @@ try {
                 $rowArr = array();
                 $rowArr['idx'] = $row['idx'];
                 $rowArr['name'] = $row['name'];
+                $rowArr['LR'] = $row['LR'];
+                $rowArr['order_idx'] = $row['order_idx'];
                 $rowArr['type_idx'] = $row['type_idx'];
+                $rowArr['coating'] = $row['coating'];
                 $rowArr['state'] = $row['state'];
                 $rowArr['order_date'] = $row['order_date'];
                 array_push($resultArr, $rowArr);
