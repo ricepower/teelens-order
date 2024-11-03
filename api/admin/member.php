@@ -39,8 +39,8 @@ try {
                 $rowArr['memo'] = $row['memo'];
                 array_push($resultArr, $rowArr);
             }
-            $aa['data'] = $resultArr;
-            echo json_encode($aa);
+            $result['data'] = $resultArr;
+            echo json_encode($result);
             exit();
             break;
         case "createOne":

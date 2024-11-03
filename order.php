@@ -39,22 +39,22 @@ if (empty($_SESSION)) {
                                 <div class="card-header">
                                     <div class="row d-flex">
                                         <div class="col-md-2">
-                                            <input id="datepicker1" />
+                                            <input id="startDatepicker" />
                                         </div>
                                         <div class="col-md-2">
-                                            <input id="datepicker2" />
+                                            <input id="endDatepicker" />
                                         </div>
                                         <div class="col-md-1"></div>
                                         <div class="col-md-2">
-                                            <input type="text" class="form-control form-control" id="defaultInput" placeholder="Order No" />
+                                            <input type="text" class="form-control form-control" id="orderIdx" placeholder="Order No" />
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-select form-control" id="defaultSelect">
+                                            <select class="form-select form-control" id="orderState">
                                                 <option disabled hidden selected>State</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                                <option value="">All</option>
+                                                <option value="ordered">Ordered</option>
+                                                <option value="processing">Processing</option>
+                                                <option value="completed">Completed</option>
                                             </select>
                                         </div>
                                         <div class="col-md-1"></div>
@@ -91,98 +91,6 @@ if (empty($_SESSION)) {
                                                     <th>State</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>R</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-danger">Orderd</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-warning">Orderd</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-warning">Orderd</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-warning">Orderd</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-warning">Orderd</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-                                                    <td>Free Form Progressive</td>
-                                                    <td>Premium HMC</td>
-                                                    <td>L</td>
-                                                    <td>1.0</td>
-                                                    <td>2.0</td>
-                                                    <td>3.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>1.0</td>
-                                                    <td>2</td>
-                                                    <td><span class="badge badge-warning">Orderd</span></td>
-                                                </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -208,16 +116,40 @@ if (empty($_SESSION)) {
     <script src="assets/js/plugin/datepicker/gijgo.min.js"></script>
     <script>
         $(document).ready(function() {
-            let picker1 = $("#datepicker1").datepicker({
-                uiLibrary: "bootstrap5"
+            let startDatepicker = $("#startDatepicker").datepicker({
+                uiLibrary: "bootstrap5",
+                format: "yyyy-mm-dd",
+            });
+            let endDatepicker = $("#endDatepicker").datepicker({
+                uiLibrary: "bootstrap5",
+                format: "yyyy-mm-dd",
+            });
+            startDatepicker.value(new Date().setDate(new Date().getDate() - 7));
+            endDatepicker.value(new Date());
+
+            startDatepicker.on("change", function() {
+                checkDateDiff();
+            });
+            endDatepicker.on("change", function() {
+                checkDateDiff();
             });
 
-            let picker2 = $("#datepicker2").datepicker({
-                uiLibrary: "bootstrap5"
-            });
+            function checkDateDiff() {
+                let startDate = new Date(startDatepicker.value());
+                let endDate = new Date(endDatepicker.value());
+                if (startDate > endDate) {
+                    alert("Start date must be before end date");
+                    endDatepicker.value(startDate);
+                }
+                console.log(endDate - startDate);
+                let diffDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+                if (diffDays > 7) {
+                    alert("Date difference must be less than 7 days");
+                    startDatepicker.value(endDate - 1);
+                }
+            }
 
             let modalMode = "ADD"; // ADD, UPDATE
-            
             let orderTable = $("#orderTable").DataTable({
                 info: false,
                 lengthChange: false,
@@ -227,14 +159,6 @@ if (empty($_SESSION)) {
                     style: "single",
                 },
                 scrollX: true,
-                // ajax: {
-                //     type: "post",
-                //     url: "api/admin/member.php",
-                //     dataType: "json",
-                //     data: {
-                //         flag: "selectAll",
-                //     },
-                // },
                 layout: {
                     bottomStart: {
                         buttons: [
@@ -250,6 +174,14 @@ if (empty($_SESSION)) {
                         ]
                     }
                 },
+                // ajax: {
+                //     type: "post",
+                //     url: "api/order.php",
+                //     dataType: "json",
+                //     data: {
+                //         flag: "selectAll",
+                //     },
+                // },
                 // columns: [{
                 //         data: "idx"
                 //     },
@@ -259,21 +191,21 @@ if (empty($_SESSION)) {
                 //     {
                 //         data: "name"
                 //     },
-                //     {
-                //         data: "authority",
-                //         render: function(data, type, row) {
-                //             return data === "0" ? "Admin" : "Customer";
-                //         },
-                //     },
-                //     {
-                //         data: "email"
-                //     },
-                //     {
-                //         data: "company"
-                //     },
-                //     {
-                //         data: "memo"
-                //     },
+                    // {
+                    //     data: "authority",
+                    //     render: function(data, type, row) {
+                    //         return data === "0" ? "Admin" : "Customer";
+                    //     },
+                    // },
+                    // {
+                    //     data: "email"
+                    // },
+                    // {
+                    //     data: "company"
+                    // },
+                    // {
+                    //     data: "memo"
+                    // },
                 // ],
                 rowCallback: function(row, data) {
                     
@@ -284,14 +216,28 @@ if (empty($_SESSION)) {
                 modalMode = "ADD";
                 resetModalForm();
                 $("#orderModal").modal('show');
+                $("#orderName").focus();
             });
 
             $("#searchButton").click(function() {
-                console.log("searchButton");
-            });
-
-            $("#saveButton").click(function() {
-                
+                $.ajax({
+                    url: "api/order.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "selectAll",
+                        startDate: $("#startDatepicker").val(),
+                        endDate: $("#endDatepicker").val(),
+                        orderIdx: $("#orderIdx").val(),
+                        orderState: $("#orderState").val(),
+                    },
+                    success: function(result) {
+                        console.log(result.data);
+                    },
+                    error: function(result, status, error) {
+                        console.log(result);
+                    },
+                });
             });
 
             $("#orderTable tbody").on("click", "tr", function() {
@@ -299,8 +245,226 @@ if (empty($_SESSION)) {
             });
 
             function resetModalForm() {
+                $("#orderName").val("");
+                $("#orderDesign").empty();
+                $("#orderIndex").empty();
+                $("#orderColor").empty();
+                $("#orderCorridor").val("");
+                $("#orderCoating").val("");
+                $('input[name="orderType"][value="1"]').prop('checked', true).trigger('change');
                 
             }
+
+            $("input[name='orderType']").change(function() {
+                console.log($(this).val());
+                $("#orderDesign").empty();
+                $("#orderIndex").empty();
+                $("#orderColor").empty();
+                $("#orderCorridor").val("");
+                $("#orderCoating").val("");
+                $.ajax({
+                    url: "api/order-design.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "selectAllByType",
+                        type_idx: $(this).val(),
+                    },
+                    success: function(result) {
+                        console.log(result.data);
+                        $("#orderDesign").empty();
+                        $.each(result.data, function(index, design) {
+                            $("#orderDesign").append("<option value='" + design.idx + "'>" + design.name + "</option>");
+                        });
+                        $("#orderDesign").val("");
+                    },
+                    error: function(result, status, error) {
+                        console.log(result);
+                    },
+                });
+
+                if ($(this).val() === "1") {
+                    $("#orderCorridor").attr("disabled", false);
+                } else if ($(this).val() === "2") {
+                    $("#orderCorridor").attr("disabled", true);
+                    $("#orderCorridor").val("");
+                } else if ($(this).val() === "3") {
+                    $("#orderCorridor").attr("disabled", true);
+                    $("#orderCorridor").val("");
+                }
+            });
+
+            $("#orderDesign").change(function() {
+                console.log($("input[name='orderType']:checked").val());
+                $.ajax({
+                    url: "api/order-index.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "selectAllByType",
+                        type_idx: $("input[name='orderType']:checked").val(),
+                    },
+                    success: function(result) {
+                        console.log(result.data);
+                        $("#orderIndex").empty();
+                        $.each(result.data, function(index, index) {
+                            $("#orderIndex").append("<option value='" + index.idx + "'>" + index.name + "</option>");
+                        });
+                        $("#orderIndex").val("");
+                    },
+                    error: function(result, status, error) {
+                        console.log(result);
+                    },
+                });
+            });
+
+            $("#orderIndex").change(function() {
+                console.log($("#orderIndex").val());
+                $.ajax({
+                    url: "api/order-color.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "selectAllByIndex",
+                        index_idx: $("#orderIndex").val(),
+                    },
+                    success: function(result) {
+                        console.log(result.data);
+                        $("#orderColor").empty();
+                        $.each(result.data, function(index, color) {
+                            $("#orderColor").append("<option value='" + color.idx + "'>" + color.name + "</option>");
+                        });
+                        $("#orderColor").val("");
+                    },
+                    error: function(result, status, error) {
+                        console.log(result);
+                    },
+                });
+            });
+
+            $("#saveButton").click(function() {
+                console.log("saveButton");
+                let orderName = $("#orderName").val();
+                let orderDesign = $("#orderDesign").val() || "";
+                let orderIndex = $("#orderIndex").val() || "";
+                let orderColor = $("#orderColor").val() || "";
+                let orderCorridor = $("#orderCorridor").val() || "";
+                let orderFrame = $("input[name='orderFrame']:checked").val() || "";
+                let orderCoating = $("#orderCoating").val() || "";
+                let orderUV = $("input[name='orderUV']").is(":checked") ? true : false;
+                let orderTintColor = $("input[name='orderTintColor']:checked").val() || "";
+                let orderMirror = $("input[name='orderMirror']:checked").val() || "";
+                let orderQty = $("#orderQty").val() || "";
+
+                if (!orderName) {
+                    $("#orderNameFormGroup").addClass("has-error has-feedback");
+                    $("#orderNameHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderNameFormGroup").removeClass("has-error has-feedback");
+                    $("#orderNameHelp").addClass("d-none");
+                }
+
+                console.log(
+                    "orderName: " + orderName + 
+                    ", \norderType: " + $("input[name='orderType']:checked").val() + 
+                    ", \norderRSPH: " + $("#orderRSPH").val() + 
+                    ", \norderRCYL: " + $("#orderRCYL").val() + 
+                    ", \norderRAXIS: " + $("#orderRAXIS").val() + 
+                    ", \norderRADD: " + $("#orderRADD").val() + 
+                    ", \norderRDIA: " + $("#orderRDIA").val() + 
+                    ", \norderRPRISM: " + $("#orderRPRISM").val() + 
+                    ", \norderRQTY: " + $("#orderRQTY").val() + 
+                    ", \norderLSPH: " + $("#orderLSPH").val() + 
+                    ", \norderLCYL: " + $("#orderLCYL").val() + 
+                    ", \norderLAXIS: " + $("#orderLAXIS").val() + 
+                    ", \norderLADD: " + $("#orderLADD").val() + 
+                    ", \norderLDIA: " + $("#orderLDIA").val() + 
+                    ", \norderLPRISM: " + $("#orderLPRISM").val() + 
+                    ", \norderLQTY: " + $("#orderLQTY").val() + 
+                    ", \norderHBOX: " + $("#orderHBOX").val() + 
+                    ", \norderVBOX: " + $("#orderVBOX").val() + 
+                    ", \norderEDBOX: " + $("#orderEDBOX").val() + 
+                    ", \norderDBL: " + $("#orderDBL").val() + 
+                    ", \norderRSEG: " + $("#orderRSEG").val() + 
+                    ", \norderRPD: " + $("#orderRPD").val() + 
+                    ", \norderLPD: " + $("#orderLPD").val() + 
+                    ", \norderPANTO: " + $("#orderPANTO").val() + 
+                    ", \norderZTILT: " + $("#orderZTILT").val() + 
+                    ", \norderINSET: " + $("#orderINSET").val() + 
+                    ", \norderDesign: " + orderDesign + 
+                    ", \norderIndex: " + orderIndex + 
+                    ", \norderColor: " + orderColor + 
+                    ", \norderCorridor: " + orderCorridor + 
+                    ", \norderFrame: " + orderFrame + 
+                    ", \norderCoating: " + orderCoating + 
+                    ", \norderUV: " + orderUV + 
+                    ", \norderTintColor: " + orderTintColor + 
+                    ", \norderTintColorDesc: " + $("#orderTintColorDesc").val() + 
+                    ", \norderMirror: " + orderMirror + 
+                    ", \norderMirrorDesc: " + $("#orderMirrorDesc").val() + 
+                    ", \norderMemo: " + $("#orderMemo").val() + 
+                    ", \norderQty: " + $("#orderQty").val()
+                );
+
+                $.ajax({
+                    url: "api/order.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "createOne",
+                        orderName: orderName,
+                        orderType: $("input[name='orderType']:checked").val(),
+                        
+                        orderRSPH: $("#orderRSPH").val(),
+                        orderRCYL: $("#orderRCYL").val(),
+                        orderRAXIS: $("#orderRAXIS").val(),
+                        orderRADD: $("#orderRADD").val(),
+                        orderRDIA: $("#orderRDIA").val(),
+                        orderRPRISM: $("#orderRPRISM").val(),
+                        orderRQTY: $("#orderRQTY").val(),
+
+                        orderLSPH: $("#orderLSPH").val(),
+                        orderLCYL: $("#orderLCYL").val(),
+                        orderLAXIS: $("#orderLAXIS").val(),
+                        orderLADD: $("#orderLADD").val(),
+                        orderLDIA: $("#orderLDIA").val(),
+                        orderLPRISM: $("#orderLPRISM").val(),
+                        orderLQTY: $("#orderLQTY").val(),
+
+                        orderHBOX: $("#orderHBOX").val(),
+                        orderVBOX: $("#orderVBOX").val(),
+                        orderEDBOX: $("#orderEDBOX").val(),
+                        orderDBL: $("#orderDBL").val(),
+                        orderRSEG: $("#orderRSEG").val(),
+                        orderRPD: $("#orderRPD").val(),
+                        orderLPD: $("#orderLPD").val(),
+                        orderPANTO: $("#orderPANTO").val(),
+                        orderZTILT: $("#orderZTILT").val(),
+                        orderINSET: $("#orderINSET").val(),
+
+                        orderDesign: orderDesign,
+                        orderIndex: orderIndex,
+                        orderColor: orderColor,
+                        orderCorridor: orderCorridor,
+                        orderFrame: orderFrame,
+                        orderCoating: orderCoating,
+                        orderUV: orderUV,
+                        orderTintColor: orderTintColor,
+                        orderTintColorDesc: $("#orderTintColorDesc").val(),
+                        orderMirror: orderMirror,
+                        orderMirrorDesc: $("#orderMirrorDesc").val(),
+                        orderMemo: $("#orderMemo").val(),
+                        orderQty: $("#orderQty").val(),
+                    },
+                    success: function(result) {
+                        console.log(result);
+                    },
+                    error: function(result, status, error) {
+                        console.log(result);
+                    },
+                });
+            });
         });
     </script>
 </body>

@@ -65,7 +65,19 @@ echo "session_status: " . session_status() . "<br/>";
 <script>
     $(document).ready(function() {
         $("#signout").click(function(e) {
-            location.replace('signout-process.php');
+            $.ajax({
+                type: "post",
+                url: "api/auth.php",
+                data: {
+                    flag: "signout",
+                },
+                success: function(result) {
+                    location.replace('signin.php');
+                },
+                error: function(result, status, error) {
+                    console.log(result);
+                }
+            });
         });
     });
 </script>

@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- 테이블 구조 `color`
 --
 
-CREATE TABLE `color` (
+CREATE TABLE `order_color` (
   `idx` int(11) NOT NULL,
   `type_idx` int(11) DEFAULT NULL,
   `design_idx` int(11) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `color` (
 -- 테이블의 덤프 데이터 `color`
 --
 
-INSERT INTO `color` (`idx`, `type_idx`, `design_idx`, `index_idx`, `name`, `sort`) VALUES
+INSERT INTO `order_color` (`idx`, `type_idx`, `design_idx`, `index_idx`, `name`, `sort`) VALUES
 (1, 1, 0, 17, 'Gray', '0'),
 (2, 1, 0, 18, 'Gray', '0'),
 (3, 1, 0, 19, 'Gray', '0'),
@@ -234,7 +234,7 @@ INSERT INTO `color` (`idx`, `type_idx`, `design_idx`, `index_idx`, `name`, `sort
 -- 테이블 구조 `design`
 --
 
-CREATE TABLE `design` (
+CREATE TABLE `order_design` (
   `idx` int(11) NOT NULL,
   `type_idx` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -245,7 +245,7 @@ CREATE TABLE `design` (
 -- 테이블의 덤프 데이터 `design`
 --
 
-INSERT INTO `design` (`idx`, `type_idx`, `name`, `sort`) VALUES
+INSERT INTO `order_design` (`idx`, `type_idx`, `name`, `sort`) VALUES
 (1, 1, 'Alpha H45', '0'),
 (2, 1, 'Alpha H25', '1'),
 (3, 1, 'Alpha H65', '2'),
@@ -285,7 +285,7 @@ INSERT INTO `design` (`idx`, `type_idx`, `name`, `sort`) VALUES
 -- 테이블 구조 `index`
 --
 
-CREATE TABLE `index` (
+CREATE TABLE `order_index` (
   `idx` int(11) NOT NULL,
   `design_idx` int(11) DEFAULT NULL,
   `type_idx` int(11) NOT NULL,
@@ -297,7 +297,7 @@ CREATE TABLE `index` (
 -- 테이블의 덤프 데이터 `index`
 --
 
-INSERT INTO `index` (`idx`, `design_idx`, `type_idx`, `name`, `sort`) VALUES
+INSERT INTO `order_index` (`idx`, `design_idx`, `type_idx`, `name`, `sort`) VALUES
 (1, NULL, 1, '1.50', 0),
 (2, NULL, 1, '1.50 BRC', 1),
 (3, NULL, 1, '1.56', 2),
@@ -555,6 +555,7 @@ CREATE TABLE `order_left_spec` (
   `order_idx` int(11) NOT NULL,
   `l_sph` varchar(255) DEFAULT NULL,
   `l_cyl` varchar(255) DEFAULT NULL,
+  `l_axis` varchar(255) DEFAULT NULL,
   `l_add` varchar(255) DEFAULT NULL,
   `l_dia` varchar(255) DEFAULT NULL,
   `l_prism` varchar(255) DEFAULT NULL,
@@ -572,6 +573,7 @@ CREATE TABLE `order_right_spec` (
   `order_idx` int(11) NOT NULL,
   `r_sph` varchar(255) DEFAULT NULL,
   `r_cyl` varchar(255) DEFAULT NULL,
+  `r_axis` varchar(255) DEFAULT NULL,
   `r_add` varchar(255) DEFAULT NULL,
   `r_dia` varchar(255) DEFAULT NULL,
   `r_prism` varchar(255) DEFAULT NULL,
@@ -604,21 +606,21 @@ INSERT INTO `type` (`idx`, `name`, `sort`) VALUES
 --
 
 --
--- 테이블의 인덱스 `color`
+-- 테이블의 인덱스 `order_color`
 --
-ALTER TABLE `color`
+ALTER TABLE `order_color`
   ADD PRIMARY KEY (`idx`);
 
 --
 -- 테이블의 인덱스 `design`
 --
-ALTER TABLE `design`
+ALTER TABLE `order_design`
   ADD PRIMARY KEY (`idx`);
 
 --
 -- 테이블의 인덱스 `index`
 --
-ALTER TABLE `index`
+ALTER TABLE `order_index`
   ADD PRIMARY KEY (`idx`);
 
 --
@@ -650,9 +652,9 @@ ALTER TABLE `type`
 --
 
 --
--- 테이블의 AUTO_INCREMENT `color`
+-- 테이블의 AUTO_INCREMENT `order_color`
 --
-ALTER TABLE `color`
+ALTER TABLE `order_color`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --

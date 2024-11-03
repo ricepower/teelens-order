@@ -24,6 +24,7 @@ try {
                         if (session_status() == PHP_SESSION_NONE) {
                             session_start();
                         }
+                        $_SESSION["idx"] = $member["idx"];
                         $_SESSION["id"] = $member["id"];
                         $_SESSION["name"] = $member["name"];
                         $_SESSION["auth"] = $member["auth"];
@@ -33,6 +34,12 @@ try {
                 }
             }
             header(trim("HTTP/1.0 401 Unauthorized"));
+            break;
+        case "signout":
+            session_unset();
+            session_destroy();
+            echo http_response_code(200);
+            exit();
             break;
         default:
             header(trim("HTTP/1.0 500 InternalServerError"));

@@ -23,8 +23,8 @@ session_destroy();
                 <h1>Sign In</h1>
                 <span>Use your ID or Email</span>
                 <br />
-                <input type="text" id="id" name="id" placeholder="ID or Email">
-                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="text" id="id" name="id" placeholder="ID or Email" value="admin">
+                <input type="password" id="password" name="password" placeholder="Password" value="1234">
                 <p id="errorMsg" style="color: #f25961 !important; margin: 0; display: none;">Please enter ID or Password</p>
                 <a href="#">Forget Your Password? 아이디 기억하기 넣기</a>
                 <button type="button">Sign In</button>
