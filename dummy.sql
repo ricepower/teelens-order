@@ -53,7 +53,7 @@ INSERT INTO `member` (`idx`, `id`, `password`, `name`, `auth`, `email`, `company
 (43, '767868', '$2y$10$1hriGirFiASRAbBNpc0.eOcFVJrBlaTas86j5KcMqqjF.zJFFSDu2', '6787658', '1', '5676547', '657567', ''),
 (44, 'sdafdsafasfxc2w', '$2y$10$jI6wjUp7v391fpu6gSwgK.WkTUIsv0/vH.ymy7B/mQQs52C1Uy.0.', '12321', '1', '', '', '');
 
--- --------------------------------------------------------
+-- --------------------------------------------------------quantity
 
 --
 -- 테이블 구조 `order`
@@ -85,7 +85,7 @@ CREATE TABLE `order` (
   `mirror` varchar(255) DEFAULT NULL,
   `mirror_desc` varchar(255) DEFAULT NULL,
   `memo` varchar(255) DEFAULT NULL,
-  `quntity` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
   `member_idx` varchar(255) NOT NULL,
   `order_date` varchar(255) DEFAULT NULL,
   `state` varchar(255) NOT NULL DEFAULT 'ordered'
@@ -95,7 +95,7 @@ CREATE TABLE `order` (
 -- 테이블의 덤프 데이터 `order`
 --
 
-INSERT INTO `order` (`idx`, `name`, `type_idx`, `hbox`, `vbox`, `edbox`, `dbl`, `r_segh`, `r_pd`, `l_pd`, `panto`, `ztilt`, `inset`, `design_idx`, `index_idx`, `color_idx`, `corridor`, `frame`, `coating`, `uv`, `tint_color`, `tint_color_desc`, `mirror`, `mirror_desc`, `memo`, `quntity`, `member_idx`, `order_date`, `state`) VALUES
+INSERT INTO `order` (`idx`, `name`, `type_idx`, `hbox`, `vbox`, `edbox`, `dbl`, `r_segh`, `r_pd`, `l_pd`, `panto`, `ztilt`, `inset`, `design_idx`, `index_idx`, `color_idx`, `corridor`, `frame`, `coating`, `uv`, `tint_color`, `tint_color_desc`, `mirror`, `mirror_desc`, `memo`, `quantity`, `member_idx`, `order_date`, `state`) VALUES
 (2, 'asdfsaf', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '', NULL, ''),
 (5, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),
 (8, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),

@@ -177,7 +177,7 @@ include("checkAdmin.php");
                             memo: memo,
                         },
                         success: function(result) {
-                            alert("Success");
+                            alert("User created successfully");
                             userTable.ajax.reload();
                             $("#modal").modal('hide');
                         },
@@ -229,7 +229,7 @@ include("checkAdmin.php");
                             memo: memo,
                         },
                         success: function(result) {
-                            alert("Success");
+                            alert("User updated successfully");
                             userTable.ajax.reload();
                             $("#modal").modal('hide');
                         },
