@@ -67,12 +67,12 @@ echo "session_status: " . session_status() . "<br/>";
         $("#signout").click(function(e) {
             $.ajax({
                 type: "post",
-                url: "api/auth.php",
+                url: "../../api/auth.php",
                 data: {
                     flag: "signout",
                 },
                 success: function(result) {
-                    location.replace('signin.php');
+                    location.replace('../../signin.php');
                 },
                 error: function(result, status, error) {
                     console.log(result);

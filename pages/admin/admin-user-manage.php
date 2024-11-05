@@ -1,21 +1,21 @@
 <?php
-include("checkAdmin.php");
+include("../../utils/checkAdmin.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include('head.php') ?>
-    <link rel="stylesheet" href="assets/css/datatables.min.css" />
+    <?php include('../commons/head.php') ?>
+    <link rel="stylesheet" href="../../assets/css/datatables.min.css" />
 </head>
 
 <body>
     <div class="wrapper">
-        <?php include('sidebar.php') ?>
+        <?php include('../commons/sidebar.php') ?>
 
         <div class="main-panel">
-            <?php include('header.php') ?>
+            <?php include('../commons/header.php') ?>
 
             <div class="container">
                 <div class="page-inner">
@@ -55,15 +55,15 @@ include("checkAdmin.php");
                     </div>
                 </div>
             </div>
-            <?php include('footer.php') ?>
+            <?php include('../commons/footer.php') ?>
         </div>
     </div>
 
     <?php include("user-modal.html") ?>
 
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-    <script src="assets/js/plugin/datatables/dataTables.select.js"></script>
-    <script src="assets/js/plugin/datatables/select.dataTables.js"></script>
+    <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../../assets/js/plugin/datatables/dataTables.select.js"></script>
+    <script src="../../assets/js/plugin/datatables/select.dataTables.js"></script>
     <script>
         $(document).ready(function() {
             let modalMode = "ADD"; // ADD, UPDATE
@@ -77,7 +77,7 @@ include("checkAdmin.php");
                 },
                 ajax: {
                     type: "post",
-                    url: "api/admin/member.php",
+                    url: "../../api/admin/member.php",
                     dataType: "json",
                     data: {
                         flag: "selectAll",
@@ -164,7 +164,7 @@ include("checkAdmin.php");
 
                     $.ajax({
                         type: "post",
-                        url: "api/admin/member.php",
+                        url: "../../api/admin/member.php",
                         dataType: "json",
                         data: {
                             flag: "createOne",
@@ -216,7 +216,7 @@ include("checkAdmin.php");
 
                     $.ajax({
                         type: "post",
-                        url: "api/admin/member.php",
+                        url: "../../api/admin/member.php",
                         dataType: "json",
                         data: {
                             flag: "updateOne",
@@ -247,7 +247,7 @@ include("checkAdmin.php");
                 row = userTable.row(this).data();
                 $.ajax({
                     type: "post",
-                    url: "api/admin/member.php",
+                    url: "../../api/admin/member.php",
                     dataType: "json",
                     data: {
                         flag: "selectOne",

@@ -42,13 +42,13 @@ if (empty($_SESSION)) {
                         <h4 class="text-section">Administrator</h4>
                     </li>
                     <li class="nav-item">
-                        <a href="order.php">
+                        <a href="../admin/admin-order.php">
                             <i class="fas fa-file-alt"></i>
                             <p>Order List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="admin-user-manage.php">
+                        <a href="../admin/admin-user-manage.php">
                             <i class="fas fa-user-edit"></i>
                             <p>User Manage</p>
                         </a>
@@ -63,7 +63,7 @@ if (empty($_SESSION)) {
                     <h4 class="text-section">Customer</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="order.php">
+                    <a href="../customer/customer-order.php">
                         <i class="fas fa-file-alt"></i>
                         <p>My Order List</p>
                     </a>

@@ -1,5 +1,5 @@
 <?php
-include("../db.php");
+include("../utils/db.php");
 
 $flag = $_POST["flag"];
 if (!isset($flag)) {

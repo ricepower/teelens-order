@@ -1,5 +1,4 @@
 <?php
-// include("checkAdmin.php");
 if (empty($_SESSION)) {
     header("location: signin.php");
 }
@@ -9,9 +8,9 @@ if (empty($_SESSION)) {
 <html lang="en">
 
 <head>
-    <?php include('head.php') ?>
-    <link rel="stylesheet" href="assets/css/datatables.min.css" />
-    <link rel="stylesheet" href="assets/css/gijgo.css" />
+    <?php include("../commons/head.php") ?>
+    <link rel="stylesheet" href="../../assets/css/datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/gijgo.css" />
     
     <style>
         #orderModal .form-control {
@@ -23,10 +22,10 @@ if (empty($_SESSION)) {
 
 <body>
     <div class="wrapper">
-        <?php include('sidebar.php') ?>
+        <?php include("../commons/sidebar.php") ?>
 
         <div class="main-panel">
-            <?php include('header.php') ?>
+            <?php include("../commons/header.php") ?>
 
             <div class="container">
                 <div class="page-inner">
@@ -100,21 +99,21 @@ if (empty($_SESSION)) {
                     </div>
                 </div>
             </div>
-            <?php include('footer.php') ?>
+            <?php include("../commons/footer.php") ?>
         </div>
     </div>
 
-    <?php include("order-modal.html") ?>
+    <?php include("../commons/order-modal.html") ?>
 
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-    <script src="assets/js/plugin/datatables/dataTables.select.js"></script>
-    <script src="assets/js/plugin/datatables/select.dataTables.js"></script>
-    <script src="assets/js/plugin/datatables/dataTables.buttons.js"></script>
-    <script src="assets/js/plugin/datatables/buttons.dataTables.js"></script>
-    <script src="assets/js/plugin/datatables/jszip.min.js"></script>
-    <script src="assets/js/plugin/datatables/vfs_fonts.js"></script>
-    <script src="assets/js/plugin/datatables/buttons.html5.min.js"></script>
-    <script src="assets/js/plugin/datepicker/gijgo.min.js"></script>
+    <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../../assets/js/plugin/datatables/dataTables.select.js"></script>
+    <script src="../../assets/js/plugin/datatables/select.dataTables.js"></script>
+    <script src="../../assets/js/plugin/datatables/dataTables.buttons.js"></script>
+    <script src="../../assets/js/plugin/datatables/buttons.dataTables.js"></script>
+    <script src="../../assets/js/plugin/datatables/jszip.min.js"></script>
+    <script src="../../assets/js/plugin/datatables/vfs_fonts.js"></script>
+    <script src="../../assets/js/plugin/datatables/buttons.html5.min.js"></script>
+    <script src="../../assets/js/plugin/datepicker/gijgo.min.js"></script>
     <script>
         $(document).ready(function() {
             let startDatepicker = $("#startDatepicker").datepicker({
@@ -179,7 +178,7 @@ if (empty($_SESSION)) {
                     }
                 },
                 ajax: {
-                    url: "api/order.php",
+                    url: "../../api/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -255,7 +254,7 @@ if (empty($_SESSION)) {
                 console.log($("#orderIdx").val());
                 console.log($("#orderState").val());
                 $.ajax({
-                    url: "api/order.php",
+                    url: "../../api/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -281,7 +280,7 @@ if (empty($_SESSION)) {
                 orderIdx = orderTable.row(this).data().idx;
                 resetModalForm();
                 $.ajax({
-                    url: "api/order.php",
+                    url: "../../api/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -328,7 +327,7 @@ if (empty($_SESSION)) {
                         $("#orderINSET").val(result.inset);
 
                         $.ajax({
-                            url: "api/order-design.php",
+                            url: "../../api/order-design.php",
                             type: "post",
                             dataType: "json",
                             data: {
@@ -344,7 +343,7 @@ if (empty($_SESSION)) {
 
 
                                 $.ajax({
-                                    url: "api/order-index.php",
+                                    url: "../../api/order-index.php",
                                     type: "post",
                                     dataType: "json",
                                     data: {
@@ -359,7 +358,7 @@ if (empty($_SESSION)) {
                                         $("#orderIndex").val(result.index_idx);
 
                                         $.ajax({
-                                            url: "api/order-color.php",
+                                            url: "../../api/order-color.php",
                                             type: "post",
                                             dataType: "json",
                                             data: {
@@ -422,7 +421,7 @@ if (empty($_SESSION)) {
                 $("#orderCoating").val("");
                 
                 $.ajax({
-                    url: "api/order-design.php",
+                    url: "../../api/order-design.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -443,7 +442,7 @@ if (empty($_SESSION)) {
                 });
 
                 $.ajax({
-                    url: "api/order-index.php",
+                    url: "../../api/order-index.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -502,7 +501,7 @@ if (empty($_SESSION)) {
             $("#orderIndex").change(function() {
                 console.log($("#orderIndex").val());
                 $.ajax({
-                    url: "api/order-color.php",
+                    url: "../../api/order-color.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -590,7 +589,7 @@ if (empty($_SESSION)) {
 
                 if (modalMode === "ADD") {
                     $.ajax({
-                        url: "api/order.php",
+                        url: "../../api/order.php",
                         type: "post",
                         dataType: "json",
                         data: {
@@ -651,7 +650,7 @@ if (empty($_SESSION)) {
                     });
                 } else if (modalMode === "UPDATE") {
                     $.ajax({
-                        url: "api/order.php",
+                        url: "../../api/order.php",
                         type: "post",
                         dataType: "json",
                         data: {

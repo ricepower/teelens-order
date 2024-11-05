@@ -1,6 +1,6 @@
 <?php
-include("../../checkAdmin.php");
-include("../../db.php");
+include("../../utils/checkAdmin.php");
+include("../../utils/db.php");
 
 $flag = $_POST["flag"];
 if (!isset($flag)) {
