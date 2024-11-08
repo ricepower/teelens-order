@@ -59,7 +59,65 @@ try {
             }
             $memberIdx = $_SESSION["idx"];
             $orderDate = date("Y-m-d H:i:s");
-            $insertSql = "INSERT INTO `order`(`name`, `type_idx`, `hbox`, `vbox`, `edbox`, `dbl`, `r_segh`, `r_pd`, `l_pd`, `panto`, `ztilt`, `inset`, `design_idx`, `index_idx`, `color_idx`, `corridor`, `frame`, `coating`, `uv`, `tint_color`, `tint_color_desc`, `mirror`, `mirror_desc`, `memo`, `quantity`, `member_idx`, `order_date`) VALUES('$orderName', '$orderType', '$orderHBOX', '$orderVBOX', '$orderEDBOX', '$orderDBL', '$orderRSEG', '$orderRPD', '$orderLPD', '$orderPANTO', '$orderZTILT', '$orderINSET', '$orderDesign', '$orderIndex', '$orderColor', '$orderCorridor', '$orderFrame', '$orderCoating', '$orderUV', '$orderTintColor', '$orderTintColorDesc', '$orderMirror', '$orderMirrorDesc', '$orderMemo', '$orderQty', '$memberIdx', '$orderDate')";
+            $insertSql = "INSERT INTO 
+                `order`(
+                    `name`, 
+                    `type_idx`, 
+                    `hbox`, 
+                    `vbox`, 
+                    `edbox`, 
+                    `dbl`, 
+                    `r_segh`, 
+                    `r_pd`, 
+                    `l_pd`, 
+                    `panto`, 
+                    `ztilt`, 
+                    `inset`, 
+                    `design_idx`, 
+                    `index_idx`, 
+                    `color_idx`, 
+                    `corridor`, 
+                    `frame`, 
+                    `coating`, 
+                    `uv`, 
+                    `tint_color`, 
+                    `tint_color_desc`, 
+                    `mirror`, 
+                    `mirror_desc`, 
+                    `memo`, 
+                    `quantity`, 
+                    `member_idx`, 
+                    `order_date`
+                ) 
+                VALUES(
+                    '$orderName', 
+                    '$orderType', 
+                    '$orderHBOX', 
+                    '$orderVBOX', 
+                    '$orderEDBOX', 
+                    '$orderDBL', 
+                    '$orderRSEG', 
+                    '$orderRPD', 
+                    '$orderLPD', 
+                    '$orderPANTO', 
+                    '$orderZTILT', 
+                    '$orderINSET', 
+                    '$orderDesign', 
+                    '$orderIndex', 
+                    '$orderColor', 
+                    '$orderCorridor', 
+                    '$orderFrame', 
+                    '$orderCoating', 
+                    '$orderUV', 
+                    '$orderTintColor', 
+                    '$orderTintColorDesc', 
+                    '$orderMirror', 
+                    '$orderMirrorDesc', 
+                    '$orderMemo', 
+                    '$orderQty', 
+                    '$memberIdx', 
+                    '$orderDate'
+                )";
             $insertResult = mysqli_query($conn, $insertSql);
             $orderIdx = mysqli_insert_id($conn);
 
@@ -127,6 +185,7 @@ try {
             $orderMirrorDesc = mysqli_real_escape_string($conn, trim($_POST["orderMirrorDesc"]));
             $orderMemo = mysqli_real_escape_string($conn, trim($_POST["orderMemo"]));
             $orderQty = mysqli_real_escape_string($conn, trim($_POST["orderQty"]));
+            $orderState = mysqli_real_escape_string($conn, trim($_POST["orderState"]));
 
             mysqli_begin_transaction($conn);
             $updateSql = "UPDATE `order` SET 
@@ -154,7 +213,8 @@ try {
                 `mirror` = '$orderMirror', 
                 `mirror_desc` = '$orderMirrorDesc', 
                 `memo` = '$orderMemo', 
-                `quantity` = '$orderQty' 
+                `quantity` = '$orderQty',
+                `state` = '$orderState'
                 WHERE `idx` = '$orderIdx'";
             $updateResult = mysqli_query($conn, $updateSql);
 
@@ -216,7 +276,7 @@ try {
             $startDate = isset($_POST["startDate"]) ? trim($_POST["startDate"]) : date("Y-m-d", strtotime("-7 Day")) . " 00:00:00";
             $endDate = isset($_POST["endDate"]) ? trim($_POST["endDate"]) : date("Y-m-d") . " 23:59:59";
             $orderIdx = isset($_POST["orderIdx"]) ? trim($_POST["orderIdx"]) : "";
-            $orderState = isset($_POST["orderState"]) ? trim($_POST["orderState"]) : "";
+            $state = isset($_POST["state"]) ? trim($_POST["state"]) : "";
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
@@ -244,16 +304,11 @@ try {
                 $types .= "i";
             }
             
-            if (!empty($orderState)) {
+            if (!empty($state)) {
                 $conditions[] = "state = ?";
-                $params[] = $orderState;
+                $params[] = $state;
                 $types .= "s";
             }
-
-            // $sql = "SELECT `order_lens_spec`.*, `order`.*, `order_type`.`name` AS `type_name` FROM `order_lens_spec` 
-            //     LEFT JOIN `order` ON `order_lens_spec`.`order_idx` = `order`.`idx`
-            //     LEFT JOIN `order_type` ON `order`.`type_idx` = `order_type`.`idx`
-            //     WHERE `order`.`member_idx` = ?";
 
             $sql = "SELECT 
                 `order`.*, 

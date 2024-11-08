@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 24-11-03 14:37
+-- 생성 시간: 24-11-06 13:29
 -- 서버 버전: 10.4.32-MariaDB
 -- PHP 버전: 8.2.12
 
@@ -46,14 +46,16 @@ INSERT INTO `member` (`idx`, `id`, `password`, `name`, `auth`, `email`, `company
 (1, 'admin', '$2y$10$AEu8mIWoewh6Jmvc/uHZyOCcOkMlUGfeIierXK9t./QJ7xWKki3La', 'teelens', '0', 'teelens@gmail.com', 'teelens', ''),
 (37, '123', '$2y$10$pn0z4bzEoBnGEWX30PF4EOBAdSYROLCRHn0vOWnvXCO4Elzm24hVu', '12', '1', '12123', 'ㅁㅁ', 'ㅠㅠ'),
 (38, '13423', '$2y$10$lGy54K3wLpVCLZVFd.rjROyi0MeRpPkbg6DRHzJSAPi.Lk3SRCxdi', '424123432', '0', '123', 'sdas', ''),
-(39, '11', '$2y$10$aiRiCwoy44Cb20zTIvDduOsPlO2DPA0LY2nZB.EjJmncn5rqZvG3C', '11', '1', '', '', ''),
+(39, '11', '$2y$10$aiRiCwoy44Cb20zTIvDduOsPlO2DPA0LY2nZB.EjJmncn5rqZvG3C', '113', '1', '', '', ''),
 (40, '22', '$2y$10$ynpQ5FgdYYLpx7UeqqYSA.NRlJYZ6153SlEBSDHV6XuJTqa034UcW', '22', '0', '213213', '123213', '213213'),
-(41, '133', '$2y$10$QaaSuLp6vFupn.ABrAGD8.LtELuACNtntkb5C8FrAdsXRSa58E4BW', '333123', '1', '333', '333', '333'),
+(41, '133', '$2y$10$QaaSuLp6vFupn.ABrAGD8.LtELuACNtntkb5C8FrAdsXRSa58E4BW', '333123', '1', '333', '333123123', '333'),
 (42, 'd', '$2y$10$tUT/SqjBb2e/nET95NkTKOc/OyQOHU3Q7X2RwaWjJ3CdZgTJl.WB2', 'd', '1', '', '', ''),
 (43, '767868', '$2y$10$1hriGirFiASRAbBNpc0.eOcFVJrBlaTas86j5KcMqqjF.zJFFSDu2', '6787658', '1', '5676547', '657567', ''),
-(44, 'sdafdsafasfxc2w', '$2y$10$jI6wjUp7v391fpu6gSwgK.WkTUIsv0/vH.ymy7B/mQQs52C1Uy.0.', '12321', '1', '', '', '');
+(44, 'sdafdsafasfxc2w', '$2y$10$jI6wjUp7v391fpu6gSwgK.WkTUIsv0/vH.ymy7B/mQQs52C1Uy.0.', '12321', '1', '', '', ''),
+(45, 'aaaaaaaaasdf', '$2y$10$mAwqchbBOGf4/uKGWzwre.YOf.tutiNUKzDb3QOC8YA5r8RcBQQZW', 'sdafadsf', '1', '', '', ''),
+(46, 'qqqq', '$2y$10$FVLO5NzVKvazPQ5b5cud5O77Z3hpqzkvV67uQ6.yNQ9d4Fmq1neRW', 'qqqq', '0', 'qqq', 'qqq', 'qqq');
 
--- --------------------------------------------------------quantity
+-- --------------------------------------------------------
 
 --
 -- 테이블 구조 `order`
@@ -96,14 +98,17 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`idx`, `name`, `type_idx`, `hbox`, `vbox`, `edbox`, `dbl`, `r_segh`, `r_pd`, `l_pd`, `panto`, `ztilt`, `inset`, `design_idx`, `index_idx`, `color_idx`, `corridor`, `frame`, `coating`, `uv`, `tint_color`, `tint_color_desc`, `mirror`, `mirror_desc`, `memo`, `quantity`, `member_idx`, `order_date`, `state`) VALUES
-(2, 'asdfsaf', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '', NULL, ''),
-(5, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),
-(8, 'aaa', 1, '', '', '', '23', '42', '', '324', '', '', '', 13, 40, 42, '12mm', 'Rimless', 'USH', 'true', 'One tone', 'fsdf', 'Full', 'sda', 'asdf', '1', '', NULL, ''),
-(9, 'qqq', 2, 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '', NULL, ''),
-(10, 'ㅁㅁㅁㅁ', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', 'admin', '2024-11-03 11:04:21', 'ordered'),
-(11, 'ㅋㅋㅋ', 2, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 11:05:41', 'ordered'),
-(12, 'ㅅㅅㅅ', 3, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 11:06:02', 'ordered'),
-(13, 'xxx', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-03 14:27:00', 'ordered');
+(18, 'asdfsdf1231', 2, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 0, 0, 0, '', 'Semi-Rimless', '', 'true', 'One tone', '', 'Full', '1', '1sds', '3', '37', '2024-11-04 12:08:52', 'ordered'),
+(21, 'qqq', 3, '', '', '', '', '', '', '', '', '', '', 31, 133, 0, '', '', '', 'false', '', '', '', '', '', '', '37', '2024-11-04 12:34:47', 'processing'),
+(22, 'qqq', 3, '', '', '', '', '', '', '', '', '', '', 31, 0, 0, '', '', '', 'true', '', '', 'Half', '', '', '', '1', '2024-11-04 12:35:17', 'canceled'),
+(23, 'asdfsf', 2, 'dsaf', 'asdf', 'sdaf', '', '', '', '', '', '', '', 21, 54, 62, '', 'Semi-Rimless', 'Premium HC', 'true', 'One tone', 'dfs', 'Full', 'fdsfd', 'sdfsf', '12', '1', '2024-11-04 13:01:30', 'ordered'),
+(24, 'asdfsf', 2, 'dsaf', 'asdf', 'sdaf', '', '', '', '', '', '', '', 21, 54, 62, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-05 11:32:34', 'ordered'),
+(25, 'sadfasd', 1, 'fds', 'sffds', 's', 'fs', 's', 'fsd', 'sffs', 'ds', 'fsd', 'sdf', 12, 19, 5, '12mm', 'Semi-Rimless', 'Premium HC', 'false', 'One tone', 'sdfasd', 'Half', '123', 'fwef', '23', '1', '2024-11-05 11:37:28', 'ordered'),
+(26, 'sadfasd', 1, 'fds', 'sffds', 's', 'fs', 's', 'fsd', 'sffs', 'ds', 'fsd', 'sdf', 12, 19, 5, '12mm', 'Semi-Rimless', 'Premium HC', 'true', 'One tone', 'sdfasd', 'Full', '123', 'fwef', '23', '1', '2024-11-05 11:52:18', 'completed'),
+(27, 'sadfasd', 1, 'fds', 'sffds', 's', 'fs', 's', 'fsd', 'sffs', 'ds', 'fsd', 'sdf', 12, 19, 5, '12mm', 'Semi-Rimless', 'Premium HC', 'true', 'One tone', 'sdfasd', 'Full', '123111', 'fwef', '23', '1', '2024-11-05 11:52:26', 'processing'),
+(28, 'sadfasd', 1, 'fds', 'sffds', 's', 'fs', 's', 'fsd', 'sffs', 'ds', 'fsd', 'sdf', 12, 19, 5, '12mm', 'Semi-Rimless', 'Premium HC', 'true', 'Two tone', 'sdfasd21212', 'Half', '123111', 'fwef', '23', '1', '2024-11-05 11:52:34', 'ordered'),
+(29, '11', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-05 11:55:10', 'ordered'),
+(30, 'asdfsafsdfdsf', 1, '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', '', '', 'false', '', '', '', '', '', '', '1', '2024-11-05 13:37:25', 'ordered');
 
 -- --------------------------------------------------------
 
@@ -582,26 +587,38 @@ CREATE TABLE `order_lens_spec` (
 --
 
 INSERT INTO `order_lens_spec` (`idx`, `order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES
-(1, 13, 'R', '1', '321', '3', '', '', '123', ''),
-(2, 13, 'L', '213', '12', '', '', '123', '21', '');
+(14, 23, 'R', 'sdafs', 'fsaf', 'sdf', 'sf', 'saf', 'sdafas', 'fdsf'),
+(15, 24, 'R', 'sdafs', 'fsaf', 'sdf', 'sf', 'saf', 'sdafas', 'fdsf'),
+(16, 25, 'R', 'asdf', 'fsdfsdfsd', 'fsdff', 'dfds', 'fds', 'sdf', 'sdfdsfsd'),
+(17, 25, 'L', 'safsd', 'sfdsf', 'sf', 'sdfs', 'fdsf', 'dsfdsf', 'fdsf'),
+(20, 27, 'R', 'asdf', 'fsdfsdfsd', 'fsdff', 'dfds', 'fds', 'sdf', 'sdfdsfsd'),
+(21, 27, 'L', 'safsd', 'sfdsf', 'sf', 'sdfs', 'fdsf', 'dsfdsf', 'fdsf'),
+(34, 28, 'R', 'asdf', 'fsdfsdfsd', 'fsdff', 'dfds', 'fds', 'sdf', 'sdfdsfsd'),
+(35, 28, 'L', 'safsd', 'sfdsf', 'sf', 'sdfs', 'fdsf', 'dsfdsf', 'fdsf'),
+(36, 26, 'R', 'asdf', 'fsdfsdfsd', 'fsdff', 'dfds', 'fds', 'sdf', 'sdfdsfsd'),
+(37, 26, 'L', 'safsd', 'sfdsf', 'sf', 'sdfs', 'fdsf', 'dsfdsf', 'fdsf'),
+(48, 22, 'R', '', '', '345345', '', '', '', ''),
+(49, 22, 'L', '123213', '', '', '', '', '', ''),
+(56, 18, 'R', '0', '1', '2', '3', '4', '5', '6'),
+(57, 18, 'L', '7', '8', '9', '10', '11', '12', '13');
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `type`
+-- 테이블 구조 `order_type`
 --
 
-CREATE TABLE `type` (
+CREATE TABLE `order_type` (
   `idx` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `sort` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 테이블의 덤프 데이터 `type`
+-- 테이블의 덤프 데이터 `order_type`
 --
 
-INSERT INTO `type` (`idx`, `name`, `sort`) VALUES
+INSERT INTO `order_type` (`idx`, `name`, `sort`) VALUES
 (1, 'Free Form Progressive', '0'),
 (2, 'Bifocal Trifocal', '1'),
 (3, 'Single Vision', '2');
@@ -638,7 +655,8 @@ ALTER TABLE `order_design`
 -- 테이블의 인덱스 `order_index`
 --
 ALTER TABLE `order_index`
-  ADD PRIMARY KEY (`idx`);
+  ADD PRIMARY KEY (`idx`),
+  ADD KEY `idx` (`idx`);
 
 --
 -- 테이블의 인덱스 `order_lens_spec`
@@ -648,9 +666,9 @@ ALTER TABLE `order_lens_spec`
   ADD KEY `idx` (`idx`);
 
 --
--- 테이블의 인덱스 `type`
+-- 테이블의 인덱스 `order_type`
 --
-ALTER TABLE `type`
+ALTER TABLE `order_type`
   ADD PRIMARY KEY (`idx`);
 
 --
@@ -661,24 +679,42 @@ ALTER TABLE `type`
 -- 테이블의 AUTO_INCREMENT `member`
 --
 ALTER TABLE `member`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- 테이블의 AUTO_INCREMENT `order`
 --
 ALTER TABLE `order`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- 테이블의 AUTO_INCREMENT `order_color`
+--
+ALTER TABLE `order_color`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+
+--
+-- 테이블의 AUTO_INCREMENT `order_design`
+--
+ALTER TABLE `order_design`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- 테이블의 AUTO_INCREMENT `order_index`
+--
+ALTER TABLE `order_index`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- 테이블의 AUTO_INCREMENT `order_lens_spec`
 --
 ALTER TABLE `order_lens_spec`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- 테이블의 AUTO_INCREMENT `type`
+-- 테이블의 AUTO_INCREMENT `order_type`
 --
-ALTER TABLE `type`
+ALTER TABLE `order_type`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (empty($_SESSION)) {
-    header("location: signin.php");
+    header("location: ../../signin.php");
 }
 ?>
 <!-- Sidebar -->
@@ -11,7 +11,7 @@ if (empty($_SESSION)) {
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <!-- <img src="assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20" /> -->
                 <h4 style="color: white; margin-bottom: 0px;">TEE LENS Order</h4>
             </a>

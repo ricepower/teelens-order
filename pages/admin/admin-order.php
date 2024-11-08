@@ -1,8 +1,5 @@
 <?php
 include("../../utils/checkAdmin.php");
-if (empty($_SESSION)) {
-    header("location: signin.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -44,11 +41,12 @@ if (empty($_SESSION)) {
                                         <div class="col-md-2">
                                             <input id="endDatepicker" />
                                         </div>
+                                        <div class="col-md-1"></div>
                                         <div class="col-md-2">
                                             <input type="text" class="form-control form-control" id="orderIdx" placeholder="Order No" />
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-select form-control" id="orderState">
+                                            <select class="form-select form-control" id="state">
                                                 <option disabled hidden selected>State</option>
                                                 <option value="">All</option>
                                                 <option value="ordered">Ordered</option>
@@ -57,9 +55,7 @@ if (empty($_SESSION)) {
                                                 <option value="canceled">Canceled</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-2">
-                                            <input type="text" class="form-control form-control" id="customerName" placeholder="Customer" />
-                                        </div>
+                                        <div class="col-md-1"></div>
                                         <div class="col-md-2 d-flex">
                                             <button id="searchButton" class="btn btn-primary btn-round ms-auto me-1 float-right">
                                                 <i class="fas fa-search"></i>
@@ -105,7 +101,7 @@ if (empty($_SESSION)) {
         </div>
     </div>
 
-    <?php include("../commons/order-modal.html") ?>
+    <?php include("../commons/order-modal.php") ?>
 
     <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
     <script src="../../assets/js/plugin/datatables/dataTables.select.js"></script>
@@ -180,7 +176,7 @@ if (empty($_SESSION)) {
                     }
                 },
                 ajax: {
-                    url: "api/order.php",
+                    url: "../../api/admin/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -188,7 +184,7 @@ if (empty($_SESSION)) {
                         startDate: $("#startDatepicker").val(),
                         endDate: $("#endDatepicker").val(),
                         orderIdx: $("#orderIdx").val(),
-                        orderState: $("#orderState").val(),
+                        state: $("#state").val(),
                     },
                 },
                 columns: [
@@ -237,7 +233,7 @@ if (empty($_SESSION)) {
                     if (isColored) {
                         $(row).css('background-color', '');
                     } else {
-                        $(row).css('background-color', '#FAFAFA');
+                        $(row).css('background-color', '#F0F0F0');
                     }
                 },
             });
@@ -254,9 +250,11 @@ if (empty($_SESSION)) {
                 console.log($("#startDatepicker").val());
                 console.log($("#endDatepicker").val());
                 console.log($("#orderIdx").val());
-                console.log($("#orderState").val());
+                console.log($("#state").val());
+                isFirstRow = true;
+                isColored = false;
                 $.ajax({
-                    url: "api/order.php",
+                    url: "../../api/admin/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -264,7 +262,7 @@ if (empty($_SESSION)) {
                         startDate: $("#startDatepicker").val(),
                         endDate: $("#endDatepicker").val(),
                         orderIdx: $("#orderIdx").val(),
-                        orderState: $("#orderState").val(),
+                        state: $("#state").val(),
                     },
                     success: function(result) {
                         console.log(result.data);
@@ -282,7 +280,7 @@ if (empty($_SESSION)) {
                 orderIdx = orderTable.row(this).data().idx;
                 resetModalForm();
                 $.ajax({
-                    url: "api/order.php",
+                    url: "../../api/order.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -329,7 +327,7 @@ if (empty($_SESSION)) {
                         $("#orderINSET").val(result.inset);
 
                         $.ajax({
-                            url: "api/order-design.php",
+                            url: "../../api/order-design.php",
                             type: "post",
                             dataType: "json",
                             data: {
@@ -345,7 +343,7 @@ if (empty($_SESSION)) {
 
 
                                 $.ajax({
-                                    url: "api/order-index.php",
+                                    url: "../../api/order-index.php",
                                     type: "post",
                                     dataType: "json",
                                     data: {
@@ -360,7 +358,7 @@ if (empty($_SESSION)) {
                                         $("#orderIndex").val(result.index_idx);
 
                                         $.ajax({
-                                            url: "api/order-color.php",
+                                            url: "../../api/order-color.php",
                                             type: "post",
                                             dataType: "json",
                                             data: {
@@ -402,12 +400,9 @@ if (empty($_SESSION)) {
                         $("#orderMirrorDesc").val(result.mirror_desc);
                         $("#orderMemo").val(result.memo);
                         $("#orderQty").val(result.quantity);
+                        $("#orderState").val(result.state);
 
                         $("#orderModal").modal('show');
-
-                        if (result.state !== "ordered") {
-                            disableModalForm();
-                        }
                     },
                     error: function(result, status, error) {
                         console.log(result);
@@ -423,7 +418,7 @@ if (empty($_SESSION)) {
                 $("#orderCoating").val("");
                 
                 $.ajax({
-                    url: "api/order-design.php",
+                    url: "../../api/order-design.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -444,7 +439,7 @@ if (empty($_SESSION)) {
                 });
 
                 $.ajax({
-                    url: "api/order-index.php",
+                    url: "../../api/order-index.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -478,7 +473,7 @@ if (empty($_SESSION)) {
             $("#orderIndex").change(function() {
                 console.log($("#orderIndex").val());
                 $.ajax({
-                    url: "api/order-color.php",
+                    url: "../../api/order-color.php",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -566,7 +561,7 @@ if (empty($_SESSION)) {
 
                 if (modalMode === "ADD") {
                     $.ajax({
-                        url: "api/order.php",
+                        url: "../../api/order.php",
                         type: "post",
                         dataType: "json",
                         data: {
@@ -627,7 +622,7 @@ if (empty($_SESSION)) {
                     });
                 } else if (modalMode === "UPDATE") {
                     $.ajax({
-                        url: "api/order.php",
+                        url: "../../api/order.php",
                         type: "post",
                         dataType: "json",
                         data: {
@@ -676,6 +671,7 @@ if (empty($_SESSION)) {
                             orderMirrorDesc: $("#orderMirrorDesc").val(),
                             orderMemo: $("#orderMemo").val(),
                             orderQty: $("#orderQty").val(),
+                            orderState: $("#orderState").val(),
                         },
                         success: function(result) {
                             console.log(result);

@@ -65,7 +65,12 @@ session_destroy();
                         password: password,
                     },
                     success: function(result) {
-                        location.href = "pages/customer/customer-order.php";
+                        console.log(result);
+                        if (result.auth === "0") {
+                            location.href = "pages/admin/admin-order.php";
+                        } else {
+                            location.href = "pages/customer/customer-order.php";
+                        }
                     },
                     error: function(result, status, error) {
                         $("#errorMsg").text("Fail to signin. Please confirm your ID or Password.");

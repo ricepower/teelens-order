@@ -1,9 +1,3 @@
-<?php
-if (empty($_SESSION)) {
-    header("location: signin.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +42,7 @@ if (empty($_SESSION)) {
                                             <input type="text" class="form-control form-control" id="orderIdx" placeholder="Order No" />
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-select form-control" id="orderState">
+                                            <select class="form-select form-control" id="state">
                                                 <option disabled hidden selected>State</option>
                                                 <option value="">All</option>
                                                 <option value="ordered">Ordered</option>
@@ -103,7 +97,7 @@ if (empty($_SESSION)) {
         </div>
     </div>
 
-    <?php include("../commons/order-modal.html") ?>
+    <?php include("../commons/order-modal.php") ?>
 
     <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
     <script src="../../assets/js/plugin/datatables/dataTables.select.js"></script>
@@ -186,7 +180,7 @@ if (empty($_SESSION)) {
                         startDate: $("#startDatepicker").val(),
                         endDate: $("#endDatepicker").val(),
                         orderIdx: $("#orderIdx").val(),
-                        orderState: $("#orderState").val(),
+                        state: $("#state").val(),
                     },
                 },
                 columns: [
@@ -235,7 +229,7 @@ if (empty($_SESSION)) {
                     if (isColored) {
                         $(row).css('background-color', '');
                     } else {
-                        $(row).css('background-color', '#FAFAFA');
+                        $(row).css('background-color', '#F0F0F0');
                     }
                 },
             });
@@ -252,7 +246,9 @@ if (empty($_SESSION)) {
                 console.log($("#startDatepicker").val());
                 console.log($("#endDatepicker").val());
                 console.log($("#orderIdx").val());
-                console.log($("#orderState").val());
+                console.log($("#state").val());
+                isFirstRow = true;
+                isColored = false;
                 $.ajax({
                     url: "../../api/order.php",
                     type: "post",
@@ -262,7 +258,7 @@ if (empty($_SESSION)) {
                         startDate: $("#startDatepicker").val(),
                         endDate: $("#endDatepicker").val(),
                         orderIdx: $("#orderIdx").val(),
-                        orderState: $("#orderState").val(),
+                        state: $("#state").val(),
                     },
                     success: function(result) {
                         console.log(result.data);
@@ -400,6 +396,7 @@ if (empty($_SESSION)) {
                         $("#orderMirrorDesc").val(result.mirror_desc);
                         $("#orderMemo").val(result.memo);
                         $("#orderQty").val(result.quantity);
+                        $("#orderState").val(result.state);
 
                         $("#orderModal").modal('show');
 
@@ -699,6 +696,7 @@ if (empty($_SESSION)) {
                             orderMirrorDesc: $("#orderMirrorDesc").val(),
                             orderMemo: $("#orderMemo").val(),
                             orderQty: $("#orderQty").val(),
+                            orderState: $("#orderState").val(),
                         },
                         success: function(result) {
                             console.log(result);
@@ -793,6 +791,7 @@ if (empty($_SESSION)) {
                 $("#orderMirrorDesc").attr("disabled", false);
                 $("#orderMemo").attr("disabled", false);
                 $("#orderQty").attr("disabled", false);
+                $("#saveButton").prop("disabled", false);
 
                 $("#orderNameFormGroup").removeClass("has-error has-feedback");
                 $("#orderNameHelp").addClass("d-none");
@@ -838,6 +837,7 @@ if (empty($_SESSION)) {
                 $("#orderMirrorDesc").attr("disabled", true);
                 $("#orderMemo").attr("disabled", true);
                 $("#orderQty").attr("disabled", true);
+                $("#saveButton").prop("disabled", true);
             }
         });
     </script>

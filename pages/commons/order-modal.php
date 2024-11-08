@@ -332,7 +332,7 @@
                 <div class="row">
                     <div class="col-md-10"></div>
                     <div class="col-md-1 text-end my-auto">
-                        <h3>Quntity: </h3>
+                        <h3>Quantity: </h3>
                     </div>
                     <div class="col-md-1">
                         <div class="form-floating form-floating-custom mb-3">
@@ -340,12 +340,50 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="modal-footer">
+            <?php
+                if ($_SESSION["auth"] === "0") {
+                    echo '
+                        <div class="modal-footer d-flex justify-content-between">
+                            <div class="col-md-3 d-flex align-items-center">
+                                <h5 class="form-label mb-0 me-2">State: </h5>
+                                <select class="form-select" id="orderState">
+                                    <option value="ordered">Ordered</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="canceled">Canceled</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
+                            </div>
+                        </div>
+                    ';
+                } else {
+                    echo '
+                        <div class="modal-footer d-flex justify-content-between">
+                            <div class="col-md-3 d-flex align-items-center invisible">
+                                <h5 class="form-label mb-0 me-2">State: </h5>
+                                <select class="form-select" id="orderState">
+                                    <option value="ordered">Ordered</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="canceled">Canceled</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
+                            </div>
+                        </div>
+                    ';
+                }
+            ?>
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

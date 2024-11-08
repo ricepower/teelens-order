@@ -28,7 +28,7 @@ try {
                         $_SESSION["id"] = $member["id"];
                         $_SESSION["name"] = $member["name"];
                         $_SESSION["auth"] = $member["auth"];
-                        echo http_response_code(200);
+                        echo json_encode($member);
                         exit();
                     }
                 }

@@ -1,16 +1,8 @@
-<?php
-echo "value: " . session_id() . "<br/>";
-echo "id: " . $_SESSION["id"] . "<br/>";
-echo "name: " . $_SESSION["name"] . "<br/>";
-echo "auth: " . $_SESSION["auth"] . "<br/>";
-echo "session_status: " . session_status() . "<br/>";
-?>
-
 <div class="main-header">
     <div class="main-header-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <!-- <img src="assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20" /> -->
                 <h4 style="color: white; margin-bottom: 0px;">TEE LENS Order</h4>
             </a>
