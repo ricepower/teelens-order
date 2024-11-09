@@ -62,7 +62,7 @@ try {
                 LEFT JOIN `order_type` ON `order`.`type_idx` = `order_type`.`idx`";
 
             if (!empty($conditions)) {
-                $sql .= " AND " . implode(" AND ", $conditions);
+                $sql .= " WHERE " . implode(" AND ", $conditions);
             }
             $sql .= " ORDER BY `order`.`idx`, `order`.`order_date`, `order_lens_spec`.`LR` DESC";
             $stmt = mysqli_prepare($conn, $sql);

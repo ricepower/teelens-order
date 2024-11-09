@@ -112,6 +112,7 @@ include("../../utils/checkAdmin.php");
     <script src="../../assets/js/plugin/datatables/vfs_fonts.js"></script>
     <script src="../../assets/js/plugin/datatables/buttons.html5.min.js"></script>
     <script src="../../assets/js/plugin/datepicker/gijgo.min.js"></script>
+    <script src="../../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
     <script>
         $(document).ready(function() {
             let startDatepicker = $("#startDatepicker").datepicker({
@@ -122,7 +123,7 @@ include("../../utils/checkAdmin.php");
                 uiLibrary: "bootstrap5",
                 format: "yyyy-mm-dd",
             });
-            startDatepicker.value(new Date().setDate(new Date().getDate() - 7));
+            startDatepicker.value(new Date());
             endDatepicker.value(new Date());
 
             startDatepicker.on("change", function() {
@@ -139,7 +140,6 @@ include("../../utils/checkAdmin.php");
                     alert("Start date must be before end date");
                     endDatepicker.value(startDate);
                 }
-                console.log(endDate - startDate);
                 let diffDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
                 if (diffDays > 7) {
                     alert("Date difference must be less than 7 days");
@@ -166,7 +166,6 @@ include("../../utils/checkAdmin.php");
                             {
                                 extend: 'csvHtml5',
                                 className: 'btn btn-primary btn-border',
-                                title: 'test',
                             },
                             {
                                 extend: 'excelHtml5',
@@ -247,10 +246,6 @@ include("../../utils/checkAdmin.php");
             });
 
             $("#searchButton").click(function() {
-                console.log($("#startDatepicker").val());
-                console.log($("#endDatepicker").val());
-                console.log($("#orderIdx").val());
-                console.log($("#state").val());
                 isFirstRow = true;
                 isColored = false;
                 $.ajax({
@@ -265,13 +260,10 @@ include("../../utils/checkAdmin.php");
                         state: $("#state").val(),
                     },
                     success: function(result) {
-                        console.log(result.data);
                         orderTable.clear();
                         orderTable.rows.add(result.data).draw();
                     },
-                    error: function(result, status, error) {
-                        console.log(result);
-                    },
+                    error: function(result, status, error) {},
                 });
             });
 
@@ -288,7 +280,6 @@ include("../../utils/checkAdmin.php");
                         orderIdx: orderIdx,
                     },
                     success: function(result) {
-                        console.log(result);
                         $("#orderName").val(result.name);
                         $('input[name="orderType"][value="' + result.type_idx + '"]').prop('checked', true);
                         if (result.type_idx === "1") {
@@ -341,14 +332,14 @@ include("../../utils/checkAdmin.php");
                                 });
                                 $("#orderDesign").val(result.design_idx);
 
-
                                 $.ajax({
                                     url: "../../api/order-index.php",
                                     type: "post",
                                     dataType: "json",
                                     data: {
-                                        flag: "selectAllByType",
+                                        flag: "selectAllByTypeAndDesign",
                                         type_idx: result.type_idx,
+                                        design_idx: result.design_idx,
                                     },
                                     success: function(indexResult) {
                                         $("#orderIndex").empty();
@@ -372,41 +363,30 @@ include("../../utils/checkAdmin.php");
                                                 });
                                                 $("#orderColor").val(result.color_idx);
                                             },
-                                            error: function(result, status, error) {
-                                                console.log(result);
-                                            },
+                                            error: function(result, status, error) {},
                                         });
                                     },
-                                    error: function(result, status, error) {
-                                        console.log(result);
-                                    },
+                                    error: function(result, status, error) {},
                                 });
-
-                                
                             },
-                            error: function(result, status, error) {
-                                console.log(result);
-                            },
+                            error: function(result, status, error) {},
                         });
 
                         $("#orderCorridor").val(result.corridor);
                         $("input[name='orderFrame'][value='" + result.frame + "']").prop("checked", true);
                         $("#orderCoating").val(result.coating);
-                        $("input[name='orderUV']").prop("checked", result.uv);
+                        $("input[name='orderUV']").prop("checked", result.uv === "true");
 
                         $("input[name='orderTintColor'][value='" + result.tint_color + "']").prop("checked", true);
                         $("#orderTintColorDesc").val(result.tint_color_desc);
                         $("input[name='orderMirror'][value='" + result.mirror + "']").prop("checked", true);
                         $("#orderMirrorDesc").val(result.mirror_desc);
                         $("#orderMemo").val(result.memo);
-                        $("#orderQty").val(result.quantity);
                         $("#orderState").val(result.state);
 
                         $("#orderModal").modal('show');
                     },
-                    error: function(result, status, error) {
-                        console.log(result);
-                    },
+                    error: function(result, status, error) {},
                 });
             });            
 
@@ -426,40 +406,33 @@ include("../../utils/checkAdmin.php");
                         type_idx: $(this).val(),
                     },
                     success: function(result) {
-                        console.log(result.data);
                         $("#orderDesign").empty();
                         $.each(result.data, function(index, design) {
                             $("#orderDesign").append("<option value='" + design.idx + "'>" + design.name + "</option>");
                         });
                         $("#orderDesign").val("");
                     },
-                    error: function(result, status, error) {
-                        console.log(result);
-                    },
-                });
-
-                $.ajax({
-                    url: "../../api/order-index.php",
-                    type: "post",
-                    dataType: "json",
-                    data: {
-                        flag: "selectAllByType",
-                        type_idx: $("input[name='orderType']:checked").val(),
-                    },
-                    success: function(result) {
-                        console.log(result.data);
-                        $("#orderIndex").empty();
-                        $.each(result.data, function(index, index) {
-                            $("#orderIndex").append("<option value='" + index.idx + "'>" + index.name + "</option>");
-                        });
-                        $("#orderIndex").val("");
-                    },
-                    error: function(result, status, error) {
-                        console.log(result);
-                    },
+                    error: function(result, status, error) {},
                 });
 
                 if ($(this).val() === "1") {
+                    $.ajax({
+                        url: "../../api/order-index.php",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            flag: "selectAllByTypeAndDesign",
+                            type_idx: $("input[name='orderType']:checked").val(),
+                        },
+                        success: function(result) {
+                            $("#orderIndex").empty();
+                            $.each(result.data, function(index, index) {
+                                $("#orderIndex").append("<option value='" + index.idx + "'>" + index.name + "</option>");
+                            });
+                            $("#orderIndex").val("");
+                        },
+                        error: function(result, status, error) {},
+                    });
                     $("#orderCorridor").attr("disabled", false);
                 } else if ($(this).val() === "2") {
                     $("#orderCorridor").attr("disabled", true);
@@ -470,8 +443,32 @@ include("../../utils/checkAdmin.php");
                 }
             });
 
+            $("#orderDesign").change(function() {
+                if ($("input[name='orderType']:checked").val() !== "1") {
+                    $.ajax({
+                        url: "../../api/order-index.php",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            flag: "selectAllByTypeAndDesign",
+                            type_idx: $("input[name='orderType']:checked").val(),
+                            design_idx: $(this).val(),
+                        },
+                        success: function(result) {
+                            $("#orderIndex").empty();
+                            $.each(result.data, function(index, index) {
+                                $("#orderIndex").append("<option value='" + index.idx + "'>" + index.name + "</option>");
+                            });
+                            $("#orderIndex").val("");
+                        },
+                        error: function(result, status, error) {},
+                    });
+                }
+                $("#orderIndex").val("");
+                $("#orderColor").val("");
+            });
+
             $("#orderIndex").change(function() {
-                console.log($("#orderIndex").val());
                 $.ajax({
                     url: "../../api/order-color.php",
                     type: "post",
@@ -481,21 +478,18 @@ include("../../utils/checkAdmin.php");
                         index_idx: $("#orderIndex").val(),
                     },
                     success: function(result) {
-                        console.log(result.data);
                         $("#orderColor").empty();
                         $.each(result.data, function(index, color) {
                             $("#orderColor").append("<option value='" + color.idx + "'>" + color.name + "</option>");
                         });
                         $("#orderColor").val("");
                     },
-                    error: function(result, status, error) {
-                        console.log(result);
-                    },
+                    error: function(result, status, error) {},
                 });
+                $("#orderColor").val("");
             });
 
             $("#saveButton").click(function() {
-                console.log("saveButton");
                 let orderName = $("#orderName").val();
                 let orderDesign = $("#orderDesign").val() || "";
                 let orderIndex = $("#orderIndex").val() || "";
@@ -506,8 +500,8 @@ include("../../utils/checkAdmin.php");
                 let orderUV = $("input[name='orderUV']").is(":checked") ? true : false;
                 let orderTintColor = $("input[name='orderTintColor']:checked").val() || "";
                 let orderMirror = $("input[name='orderMirror']:checked").val() || "";
-                let orderQty = $("#orderQty").val() || "";
 
+                // orderName validation
                 if (!orderName) {
                     $("#orderNameFormGroup").addClass("has-error has-feedback");
                     $("#orderNameHelp").removeClass("d-none");
@@ -517,47 +511,25 @@ include("../../utils/checkAdmin.php");
                     $("#orderNameHelp").addClass("d-none");
                 }
 
-                console.log(
-                    "orderName: " + orderName + 
-                    ", \norderType: " + $("input[name='orderType']:checked").val() + 
-                    ", \norderRSPH: " + $("#orderRSPH").val() + 
-                    ", \norderRCYL: " + $("#orderRCYL").val() + 
-                    ", \norderRAXIS: " + $("#orderRAXIS").val() + 
-                    ", \norderRADD: " + $("#orderRADD").val() + 
-                    ", \norderRDIA: " + $("#orderRDIA").val() + 
-                    ", \norderRPRISM: " + $("#orderRPRISM").val() + 
-                    ", \norderRQTY: " + $("#orderRQTY").val() + 
-                    ", \norderLSPH: " + $("#orderLSPH").val() + 
-                    ", \norderLCYL: " + $("#orderLCYL").val() + 
-                    ", \norderLAXIS: " + $("#orderLAXIS").val() + 
-                    ", \norderLADD: " + $("#orderLADD").val() + 
-                    ", \norderLDIA: " + $("#orderLDIA").val() + 
-                    ", \norderLPRISM: " + $("#orderLPRISM").val() + 
-                    ", \norderLQTY: " + $("#orderLQTY").val() + 
-                    ", \norderHBOX: " + $("#orderHBOX").val() + 
-                    ", \norderVBOX: " + $("#orderVBOX").val() + 
-                    ", \norderEDBOX: " + $("#orderEDBOX").val() + 
-                    ", \norderDBL: " + $("#orderDBL").val() + 
-                    ", \norderRSEG: " + $("#orderRSEG").val() + 
-                    ", \norderRPD: " + $("#orderRPD").val() + 
-                    ", \norderLPD: " + $("#orderLPD").val() + 
-                    ", \norderPANTO: " + $("#orderPANTO").val() + 
-                    ", \norderZTILT: " + $("#orderZTILT").val() + 
-                    ", \norderINSET: " + $("#orderINSET").val() + 
-                    ", \norderDesign: " + orderDesign + 
-                    ", \norderIndex: " + orderIndex + 
-                    ", \norderColor: " + orderColor + 
-                    ", \norderCorridor: " + orderCorridor + 
-                    ", \norderFrame: " + orderFrame + 
-                    ", \norderCoating: " + orderCoating + 
-                    ", \norderUV: " + orderUV + 
-                    ", \norderTintColor: " + orderTintColor + 
-                    ", \norderTintColorDesc: " + $("#orderTintColorDesc").val() + 
-                    ", \norderMirror: " + orderMirror + 
-                    ", \norderMirrorDesc: " + $("#orderMirrorDesc").val() + 
-                    ", \norderMemo: " + $("#orderMemo").val() + 
-                    ", \norderQty: " + $("#orderQty").val()
-                );
+                // orderCoating validation
+                if (!orderCoating) {
+                    $("#orderCoatingFormGroup").addClass("has-error has-feedback");
+                    $("#orderCoatingHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderCoatingFormGroup").removeClass("has-error has-feedback");
+                    $("#orderCoatingHelp").addClass("d-none");
+                }
+
+                // orderFrame validation
+                if (!orderFrame) {
+                    $("#orderFrameFormGroup").addClass("has-error has-feedback");
+                    $("#orderFrameHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderFrameFormGroup").removeClass("has-error has-feedback");
+                    $("#orderFrameHelp").addClass("d-none");
+                }
 
                 if (modalMode === "ADD") {
                     $.ajax({
@@ -608,16 +580,21 @@ include("../../utils/checkAdmin.php");
                             orderMirror: orderMirror,
                             orderMirrorDesc: $("#orderMirrorDesc").val(),
                             orderMemo: $("#orderMemo").val(),
-                            orderQty: $("#orderQty").val(),
                         },
                         success: function(result) {
-                            console.log(result);
                             alert("Order created successfully");
                             $("#searchButton").click();
                             $("#orderModal").modal('hide');
                         },
                         error: function(result, status, error) {
-                            console.log(result);
+                            swal("Error", "Order creation failed", {
+                                icon: "error",
+                                buttons: {
+                                    confirm: {
+                                        className: "btn btn-danger",
+                                    },
+                                },
+                            });
                         },
                     });
                 } else if (modalMode === "UPDATE") {
@@ -670,17 +647,22 @@ include("../../utils/checkAdmin.php");
                             orderMirror: orderMirror,
                             orderMirrorDesc: $("#orderMirrorDesc").val(),
                             orderMemo: $("#orderMemo").val(),
-                            orderQty: $("#orderQty").val(),
                             orderState: $("#orderState").val(),
                         },
                         success: function(result) {
-                            console.log(result);
                             alert("Order updated successfully");
                             $("#searchButton").click();
                             $("#orderModal").modal('hide');
                         },
                         error: function(result, status, error) {
-                            console.log(result);
+                            swal("Error", "Order update failed", {
+                                icon: "error",
+                                buttons: {
+                                    confirm: {
+                                        className: "btn btn-danger",
+                                    },
+                                },
+                            });
                         },
                     });
                 }                
@@ -725,7 +707,6 @@ include("../../utils/checkAdmin.php");
                 $("input[name='orderMirror']").prop("checked", false);
                 $("#orderMirrorDesc").val("");
                 $("#orderMemo").val("");
-                $("#orderQty").val("");
 
                 $("#orderName").attr("disabled", false);
                 $("input[name='orderType']").attr("disabled", false);
@@ -765,10 +746,13 @@ include("../../utils/checkAdmin.php");
                 $("input[name='orderMirror']").prop("disabled", false);
                 $("#orderMirrorDesc").attr("disabled", false);
                 $("#orderMemo").attr("disabled", false);
-                $("#orderQty").attr("disabled", false);
 
                 $("#orderNameFormGroup").removeClass("has-error has-feedback");
                 $("#orderNameHelp").addClass("d-none");
+                $("#orderCoatingFormGroup").removeClass("has-error has-feedback");
+                $("#orderCoatingHelp").addClass("d-none");
+                $("#orderFrameFormGroup").removeClass("has-error has-feedback");
+                $("#orderFrameHelp").addClass("d-none");
             }
 
             function disableModalForm() {
@@ -810,7 +794,6 @@ include("../../utils/checkAdmin.php");
                 $("input[name='orderMirror']").prop("disabled", true);
                 $("#orderMirrorDesc").attr("disabled", true);
                 $("#orderMemo").attr("disabled", true);
-                $("#orderQty").attr("disabled", true);
             }
         });
     </script>

@@ -26,7 +26,7 @@ try {
             $orderLADD = mysqli_real_escape_string($conn, trim($_POST["orderLADD"]));
             $orderLDIA = mysqli_real_escape_string($conn, trim($_POST["orderLDIA"]));
             $orderLPRISM = mysqli_real_escape_string($conn, trim($_POST["orderLPRISM"]));
-            $orderQTY = mysqli_real_escape_string($conn, trim($_POST["orderLQTY"]));
+            $orderLQTY = mysqli_real_escape_string($conn, trim($_POST["orderLQTY"]));
 
             $orderHBOX = mysqli_real_escape_string($conn, trim($_POST["orderHBOX"]));
             $orderVBOX = mysqli_real_escape_string($conn, trim($_POST["orderVBOX"]));
@@ -39,9 +39,9 @@ try {
             $orderZTILT = mysqli_real_escape_string($conn, trim($_POST["orderZTILT"]));
             $orderINSET = mysqli_real_escape_string($conn, trim($_POST["orderINSET"]));
 
-            $orderDesign = mysqli_real_escape_string($conn, trim($_POST["orderDesign"]));
-            $orderIndex = mysqli_real_escape_string($conn, trim($_POST["orderIndex"]));
-            $orderColor = mysqli_real_escape_string($conn, trim($_POST["orderColor"]));
+            $orderDesign = isset($_POST["orderDesign"]) && $_POST["orderDesign"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderDesign"])) : 'NULL';
+            $orderIndex = isset($_POST["orderIndex"]) && $_POST["orderIndex"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderIndex"])) : 'NULL';
+            $orderColor = isset($_POST["orderColor"]) && $_POST["orderColor"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderColor"])) : 'NULL';
             $orderCorridor = mysqli_real_escape_string($conn, trim($_POST["orderCorridor"]));
             $orderFrame = mysqli_real_escape_string($conn, trim($_POST["orderFrame"]));
             $orderCoating = mysqli_real_escape_string($conn, trim($_POST["orderCoating"]));
@@ -51,7 +51,6 @@ try {
             $orderMirror = mysqli_real_escape_string($conn, trim($_POST["orderMirror"]));
             $orderMirrorDesc = mysqli_real_escape_string($conn, trim($_POST["orderMirrorDesc"]));
             $orderMemo = mysqli_real_escape_string($conn, trim($_POST["orderMemo"]));
-            $orderQty = mysqli_real_escape_string($conn, trim($_POST["orderQty"]));
 
             mysqli_begin_transaction($conn);
             if (session_status() == PHP_SESSION_NONE) {
@@ -85,7 +84,6 @@ try {
                     `mirror`, 
                     `mirror_desc`, 
                     `memo`, 
-                    `quantity`, 
                     `member_idx`, 
                     `order_date`
                 ) 
@@ -102,9 +100,9 @@ try {
                     '$orderPANTO', 
                     '$orderZTILT', 
                     '$orderINSET', 
-                    '$orderDesign', 
-                    '$orderIndex', 
-                    '$orderColor', 
+                    $orderDesign, 
+                    $orderIndex, 
+                    $orderColor, 
                     '$orderCorridor', 
                     '$orderFrame', 
                     '$orderCoating', 
@@ -114,10 +112,10 @@ try {
                     '$orderMirror', 
                     '$orderMirrorDesc', 
                     '$orderMemo', 
-                    '$orderQty', 
                     '$memberIdx', 
                     '$orderDate'
                 )";
+
             $insertResult = mysqli_query($conn, $insertSql);
             $orderIdx = mysqli_insert_id($conn);
 
@@ -126,8 +124,8 @@ try {
                 $insertOrderRightSpecResult = mysqli_query($conn, $insertOrderRightSpecSql);
             }
 
-            if ($orderLSPH != "" || $orderLCYL != "" || $orderLAXIS != "" || $orderLADD != "" || $orderLDIA != "" || $orderLPRISM != "" || $orderQTY != "") {
-                $insertOrderLeftSpecSql = "INSERT INTO order_lens_spec(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'L', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderQTY')";
+            if ($orderLSPH != "" || $orderLCYL != "" || $orderLAXIS != "" || $orderLADD != "" || $orderLDIA != "" || $orderLPRISM != "" || $orderLQTY != "") {
+                $insertOrderLeftSpecSql = "INSERT INTO order_lens_spec(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'L', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderLQTY')";
                 $insertOrderLeftSpecResult = mysqli_query($conn, $insertOrderLeftSpecSql);
             }
 
@@ -139,6 +137,7 @@ try {
                 header(trim("HTTP/1.0 500 InternalServerError"));
                 exit();
             }
+            exit();
             break;
         case "updateOne":
             $orderIdx = mysqli_real_escape_string($conn, trim($_POST["orderIdx"]));
@@ -159,7 +158,7 @@ try {
             $orderLADD = mysqli_real_escape_string($conn, trim($_POST["orderLADD"]));
             $orderLDIA = mysqli_real_escape_string($conn, trim($_POST["orderLDIA"]));
             $orderLPRISM = mysqli_real_escape_string($conn, trim($_POST["orderLPRISM"]));
-            $orderQTY = mysqli_real_escape_string($conn, trim($_POST["orderLQTY"]));
+            $orderLQTY = mysqli_real_escape_string($conn, trim($_POST["orderLQTY"]));
 
             $orderHBOX = mysqli_real_escape_string($conn, trim($_POST["orderHBOX"]));
             $orderVBOX = mysqli_real_escape_string($conn, trim($_POST["orderVBOX"]));
@@ -172,9 +171,9 @@ try {
             $orderZTILT = mysqli_real_escape_string($conn, trim($_POST["orderZTILT"]));
             $orderINSET = mysqli_real_escape_string($conn, trim($_POST["orderINSET"]));
 
-            $orderDesign = mysqli_real_escape_string($conn, trim($_POST["orderDesign"]));
-            $orderIndex = mysqli_real_escape_string($conn, trim($_POST["orderIndex"]));
-            $orderColor = mysqli_real_escape_string($conn, trim($_POST["orderColor"]));
+            $orderDesign = isset($_POST["orderDesign"]) && $_POST["orderDesign"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderDesign"])) : 'NULL';
+            $orderIndex = isset($_POST["orderIndex"]) && $_POST["orderIndex"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderIndex"])) : 'NULL';
+            $orderColor = isset($_POST["orderColor"]) && $_POST["orderColor"] !== '' ? mysqli_real_escape_string($conn, trim($_POST["orderColor"])) : 'NULL';
             $orderCorridor = mysqli_real_escape_string($conn, trim($_POST["orderCorridor"]));
             $orderFrame = mysqli_real_escape_string($conn, trim($_POST["orderFrame"]));
             $orderCoating = mysqli_real_escape_string($conn, trim($_POST["orderCoating"]));
@@ -184,7 +183,6 @@ try {
             $orderMirror = mysqli_real_escape_string($conn, trim($_POST["orderMirror"]));
             $orderMirrorDesc = mysqli_real_escape_string($conn, trim($_POST["orderMirrorDesc"]));
             $orderMemo = mysqli_real_escape_string($conn, trim($_POST["orderMemo"]));
-            $orderQty = mysqli_real_escape_string($conn, trim($_POST["orderQty"]));
             $orderState = mysqli_real_escape_string($conn, trim($_POST["orderState"]));
 
             mysqli_begin_transaction($conn);
@@ -201,9 +199,9 @@ try {
                 `panto` = '$orderPANTO', 
                 `ztilt` = '$orderZTILT', 
                 `inset` = '$orderINSET', 
-                `design_idx` = '$orderDesign', 
-                `index_idx` = '$orderIndex', 
-                `color_idx` = '$orderColor', 
+                `design_idx` = $orderDesign, 
+                `index_idx` = $orderIndex, 
+                `color_idx` = $orderColor, 
                 `corridor` = '$orderCorridor', 
                 `frame` = '$orderFrame', 
                 `coating` = '$orderCoating', 
@@ -213,7 +211,6 @@ try {
                 `mirror` = '$orderMirror', 
                 `mirror_desc` = '$orderMirrorDesc', 
                 `memo` = '$orderMemo', 
-                `quantity` = '$orderQty',
                 `state` = '$orderState'
                 WHERE `idx` = '$orderIdx'";
             $updateResult = mysqli_query($conn, $updateSql);
@@ -228,10 +225,10 @@ try {
                 $deleteOrderRightSpecResult = mysqli_query($conn, $deleteOrderRightSpecSql);
             }
 
-            if ($orderLSPH != "" || $orderLCYL != "" || $orderLAXIS != "" || $orderLADD != "" || $orderLDIA != "" || $orderLPRISM != "" || $orderQTY != "") {
+            if ($orderLSPH != "" || $orderLCYL != "" || $orderLAXIS != "" || $orderLADD != "" || $orderLDIA != "" || $orderLPRISM != "" || $orderLQTY != "") {
                 $deleteOrderLeftSpecSql = "DELETE FROM `order_lens_spec` WHERE `order_idx` = '$orderIdx' AND `LR` = 'L'";
                 $deleteOrderLeftSpecResult = mysqli_query($conn, $deleteOrderLeftSpecSql);
-                $insertOrderLeftSpecSql = "INSERT INTO `order_lens_spec`(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'L', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderQTY')";
+                $insertOrderLeftSpecSql = "INSERT INTO `order_lens_spec`(`order_idx`, `LR`, `sph`, `cyl`, `axis`, `add`, `dia`, `prism`, `qty`) VALUES('$orderIdx', 'L', '$orderLSPH', '$orderLCYL', '$orderLAXIS', '$orderLADD', '$orderLDIA', '$orderLPRISM', '$orderLQTY')";
                 $insertOrderLeftSpecResult = mysqli_query($conn, $insertOrderLeftSpecSql);  
             } else {
                 $deleteOrderLeftSpecSql = "DELETE FROM `order_lens_spec` WHERE `order_idx` = '$orderIdx' AND `LR` = 'L'";
@@ -245,6 +242,7 @@ try {
                 header(trim("HTTP/1.0 500 InternalServerError"));
                 exit();
             }
+            exit();
             break;
         case "selectOne":
             $orderIdx = trim($_POST["orderIdx"]);

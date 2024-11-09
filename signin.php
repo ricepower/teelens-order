@@ -26,7 +26,7 @@ session_destroy();
                 <input type="text" id="id" name="id" placeholder="ID or Email" value="admin">
                 <input type="password" id="password" name="password" placeholder="Password" value="1234">
                 <p id="errorMsg" style="color: #f25961 !important; margin: 0; display: none;">Please enter ID or Password</p>
-                <a href="#">Forget Your Password? 아이디 기억하기 넣기</a>
+                <!-- <a href="#">Forget Your Password? 아이디 기억하기 넣기</a> -->
                 <button type="button">Sign In</button>
             </form>
         </div>
@@ -36,8 +36,8 @@ session_destroy();
                     <div class="logo-img">
                         <img src="assets/img/logo.png" />
                     </div>
-                    <h1>TEE LENS</h1>
-                    <p>teelens.order 방문을 환영한다잉</p>
+                    <!-- <h1>TEE LENS</h1> -->
+                    <p>Welcome your visit.</p>
                 </div>
             </div>
         </div>
@@ -80,15 +80,6 @@ session_destroy();
             });
         });
     </script>
-    <?php
-    echo var_dump($_SESSION) . "<br/>";
-    echo var_dump(isset($_SESSION)) . "<br/>";
-    echo var_dump(empty($_SESSION)) . "<br/>";
-    echo var_dump(session_status()) . "<br/>";
-    echo var_dump(PHP_SESSION_DISABLED) . "<br/>";
-    echo var_dump(PHP_SESSION_NONE) . "<br/>";
-    echo var_dump(PHP_SESSION_ACTIVE) . "<br/>";
-    ?>
 </body>
 
 </html>

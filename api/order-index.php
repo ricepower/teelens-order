@@ -8,9 +8,16 @@ if (!isset($flag)) {
 }
 try {
     switch ($flag) {
-        case "selectAllByType":
+        case "selectAllByTypeAndDesign":
             $type_idx = $_POST["type_idx"];
-            $sql = "SELECT * FROM order_index WHERE type_idx = '$type_idx' ORDER BY sort ASC";
+            $design_idx = isset($_POST["design_idx"]) ? $_POST["design_idx"] : null;
+            
+            $sql = "SELECT * FROM order_index WHERE type_idx = '$type_idx'";
+            if ($design_idx) {
+                $sql .= " AND design_idx = '$design_idx'";
+            }
+            $sql .= " ORDER BY sort ASC";
+            
             $fetch = mysqli_query($conn, $sql);
 
             $resultArr = array();

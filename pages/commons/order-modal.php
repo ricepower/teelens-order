@@ -12,7 +12,7 @@
                         <div id="orderNameFormGroup" class="form-group">
                             <label for="largeInput">Order name</label>
                             <input type="text" class="form-control form-control" id="orderName" name="orderName" placeholder="Order name" value="" />
-                            <small id="orderNameHelp" class="form-text text-muted d-none">This field is required.</small>
+                            <small id="orderNameHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                     <div class="col-md-5"></div>
@@ -232,7 +232,7 @@
 
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="form-group">
+                        <div id="orderFrameFormGroup" class="form-group">
                             <label class="form-label">FRAME</label>
                             <div class="selectgroup w-100">
                                 <label class="selectgroup-item">
@@ -248,16 +248,19 @@
                                     <span class="selectgroup-button">Semi-Rimless</span>
                                 </label>
                             </div>
+                            <div id="orderFrameHelp" class="form-text text-danger d-none">Frame is required</div>
                         </div>
                     </div>
                     <div class="col-md-5"></div>
                     <div class="col-md-3">
-                        <div class="form-group">
+                        <div id="orderCoatingFormGroup" class="form-group">
                             <label>Coating</label>
                             <select class="form-select" id="orderCoating" name="orderCoating">
                                 <option value="NC">NC</option>
                                 <option value="HC">HC</option>
                                 <option value="AR HMC">AR HMC</option>
+                                <option value="AR NC">AR HMC USH</option>
+                                <option value="AR + SD Diamond">AR + SD Diamond</option>
                                 <option value="USH">USH</option>
                                 <option value="SD Diamond">SD Diamond</option>
                                 <option value="Premium HC">Premium HC</option>
@@ -269,6 +272,7 @@
                                 <option value="Inside HMC">Inside HMC</option>
                                 <option value="Inside USH">Inside USH</option>
                             </select>
+                            <div id="orderCoatingHelp" class="form-text text-danger d-none">Coating is required</div>
                         </div>
                     </div>
                     <div class="col-md-1">
@@ -325,18 +329,6 @@
                         <div class="form-group">
                             <label for="comment">Order Memo</label>
                             <textarea class="form-control" id="orderMemo" rows="4" value=""></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-10"></div>
-                    <div class="col-md-1 text-end my-auto">
-                        <h3>Quantity: </h3>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-floating form-floating-custom mb-3">
-                            <input type="text" class="form-control text-center" style="font-size: 20px; padding-right: 0px;" id="orderQty" placeholder="1" />
                         </div>
                     </div>
                 </div>
