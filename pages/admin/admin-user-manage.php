@@ -182,7 +182,6 @@ include("../../utils/checkAdmin.php");
                             $("#modal").modal('hide');
                         },
                         error: function(result, status, error) {
-                            console.log(result);
                             alert(error);
                         }
                     });
@@ -262,9 +261,7 @@ include("../../utils/checkAdmin.php");
                         $("#memo").val(result.memo);
                         $("#modal").modal('show');
                     },
-                    error: function(result, status, error) {
-                        console.log(error);
-                    }
+                    error: function(result, status, error) {}
                 });
                 
                 $("#id").attr("disabled", true);

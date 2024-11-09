@@ -23,8 +23,8 @@ session_destroy();
                 <h1>Sign In</h1>
                 <span>Use your ID or Email</span>
                 <br />
-                <input type="text" id="id" name="id" placeholder="ID or Email" value="admin">
-                <input type="password" id="password" name="password" placeholder="Password" value="1234">
+                <input type="text" id="id" name="id" placeholder="ID or Email" value="">
+                <input type="password" id="password" name="password" placeholder="Password" value="">
                 <p id="errorMsg" style="color: #f25961 !important; margin: 0; display: none;">Please enter ID or Password</p>
                 <!-- <a href="#">Forget Your Password? 아이디 기억하기 넣기</a> -->
                 <button type="button">Sign In</button>
@@ -46,6 +46,7 @@ session_destroy();
     <script src="assets/js/core/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
+            $("#id").focus();
             $("button").click(function(e) {
                 let id = $("#id").val();
                 let password = $("#password").val();
@@ -65,7 +66,6 @@ session_destroy();
                         password: password,
                     },
                     success: function(result) {
-                        console.log(result);
                         if (result.auth === "0") {
                             location.href = "pages/admin/admin-order.php";
                         } else {
@@ -77,6 +77,13 @@ session_destroy();
                         $("#errorMsg").show();
                     }
                 });
+            });
+
+            $("input").keypress(function(e) {
+                if (e.which === 13) {
+                    $("button").click();
+                    return false;
+                }
             });
         });
     </script>

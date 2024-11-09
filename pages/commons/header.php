@@ -66,9 +66,7 @@
                 success: function(result) {
                     location.replace('../../signin.php');
                 },
-                error: function(result, status, error) {
-                    console.log(result);
-                }
+                error: function(result, status, error) {}
             });
         });
     });
