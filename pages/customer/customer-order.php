@@ -10,6 +10,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <?php include("../commons/head.php") ?>
     <link rel="stylesheet" href="../../assets/css/datatables.min.css" />
     <link rel="stylesheet" href="../../assets/css/gijgo.css" />
+    <link rel="stylesheet" href="../../assets/css/custom.css" />
     
     <style>
         #orderModal .form-control {
@@ -58,11 +59,11 @@ if (session_status() == PHP_SESSION_NONE) {
                                         </div>
                                         <div class="col-md-1"></div>
                                         <div class="col-md-2 d-flex">
-                                            <button id="searchButton" class="btn btn-primary btn-round ms-auto me-1 float-right">
+                                            <button id="searchButton" class="btn btn-muted btn-round ms-auto me-1 float-right">
                                                 <i class="fas fa-search"></i>
                                                 Search
                                             </button>
-                                            <button id="orderButton" class="btn btn-danger btn-round float-right">
+                                            <button id="orderButton" class="btn btn-primary btn-round float-right">
                                                 <i class="fa fa-plus"></i>
                                                 Order
                                             </button>
@@ -516,14 +517,64 @@ if (session_status() == PHP_SESSION_NONE) {
                     $("#orderNameHelp").addClass("d-none");
                 }
 
-                // orderCoating validation
-                if (!orderCoating) {
-                    $("#orderCoatingFormGroup").addClass("has-error has-feedback");
-                    $("#orderCoatingHelp").removeClass("d-none");
+                // orderRSPH validation
+                if (!$("#orderRSPH").val()) {
+                    $("#orderRSPHFormGroup").addClass("has-error has-feedback");
+                    $("#orderRSPHHelp").removeClass("d-none");
                     return;
                 } else {
-                    $("#orderCoatingFormGroup").removeClass("has-error has-feedback");
-                    $("#orderCoatingHelp").addClass("d-none");
+                    $("#orderRSPHFormGroup").removeClass("has-error has-feedback");
+                    $("#orderRSPHHelp").addClass("d-none");
+                }
+
+                // orderRCYL validation
+                if (!$("#orderRCYL").val()) {
+                    $("#orderRCYLFormGroup").addClass("has-error has-feedback");
+                    $("#orderRCYLHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderRCYLFormGroup").removeClass("has-error has-feedback");
+                    $("#orderRCYLHelp").addClass("d-none");
+                }
+
+                // orderRQTY validation
+                if (!$("#orderRQTY").val()) {
+                    $("#orderRQTYFormGroup").addClass("has-error has-feedback");
+                    $("#orderRQTYHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderRQTYFormGroup").removeClass("has-error has-feedback");
+                    $("#orderRQTYHelp").addClass("d-none");
+                }
+
+                // orderLSPH validation
+                if (!$("#orderLSPH").val()) {
+                    $("#orderLSPHFormGroup").addClass("has-error has-feedback");
+                    $("#orderLSPHHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderLSPHFormGroup").removeClass("has-error has-feedback");
+                    $("#orderLSPHHelp").addClass("d-none");
+                }
+
+                // orderLCYL validation
+                if (!$("#orderLCYL").val()) {
+                    $("#orderLCYLFormGroup").addClass("has-error has-feedback");
+                    $("#orderLCYLHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderLCYLFormGroup").removeClass("has-error has-feedback");
+                    $("#orderLCYLHelp").addClass("d-none");
+                }
+
+                // orderLQTY validation
+                if (!$("#orderLQTY").val()) {
+                    $("#orderLQTYFormGroup").addClass("has-error has-feedback");
+                    $("#orderLQTYHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderLQTYFormGroup").removeClass("has-error has-feedback");
+                    $("#orderLQTYHelp").addClass("d-none");
                 }
 
                 // orderFrame validation
@@ -535,6 +586,16 @@ if (session_status() == PHP_SESSION_NONE) {
                     $("#orderFrameFormGroup").removeClass("has-error has-feedback");
                     $("#orderFrameHelp").addClass("d-none");
                 }
+
+                // orderCoating validation
+                if (!orderCoating) {
+                    $("#orderCoatingFormGroup").addClass("has-error has-feedback");
+                    $("#orderCoatingHelp").removeClass("d-none");
+                    return;
+                } else {
+                    $("#orderCoatingFormGroup").removeClass("has-error has-feedback");
+                    $("#orderCoatingHelp").addClass("d-none");
+                }                
 
                 if (modalMode === "ADD") {
                     $.ajax({
@@ -745,6 +806,18 @@ if (session_status() == PHP_SESSION_NONE) {
                 $("#orderCoatingHelp").addClass("d-none");
                 $("#orderFrameFormGroup").removeClass("has-error has-feedback");
                 $("#orderFrameHelp").addClass("d-none");
+                $("#orderRSPHFormGroup").removeClass("has-error has-feedback");
+                $("#orderRSPHHelp").addClass("d-none");
+                $("#orderRCYLFormGroup").removeClass("has-error has-feedback");
+                $("#orderRCYLHelp").addClass("d-none");
+                $("#orderRQTYFormGroup").removeClass("has-error has-feedback");
+                $("#orderRQTYHelp").addClass("d-none");
+                $("#orderLSPHFormGroup").removeClass("has-error has-feedback");
+                $("#orderLSPHHelp").addClass("d-none");
+                $("#orderLCYLFormGroup").removeClass("has-error has-feedback");
+                $("#orderLCYLHelp").addClass("d-none");
+                $("#orderLQTYFormGroup").removeClass("has-error has-feedback");
+                $("#orderLQTYHelp").addClass("d-none");
             }
 
             function disableModalForm() {

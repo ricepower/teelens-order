@@ -182,7 +182,7 @@ include("../../utils/checkAdmin.php");
                             $("#modal").modal('hide');
                         },
                         error: function(result, status, error) {
-                            alert(error);
+                            console.log(result);
                         }
                     });
                 } else if (modalMode === "UPDATE") {

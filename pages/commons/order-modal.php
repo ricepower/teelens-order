@@ -45,15 +45,17 @@
                         <h3>R</h3>
                     </div>
                     <div class="col ps-1 pe-1">
-                        <div class="form-group text-center p-0">
+                        <div id="orderRSPHFormGroup" class="form-group text-center p-0">
                             <label for="largeInput">SPH</label>
                             <input type="text" class="form-control form-control" id="orderRSPH" value="" />
+                            <small id="orderRSPHHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                     <div class="col ps-1 pe-1">
-                        <div class="form-group text-center p-0">
+                        <div id="orderRCYLFormGroup" class="form-group text-center p-0">
                             <label for="largeInput">CYL</label>
                             <input type="text" class="form-control form-control" id="orderRCYL" value="" />
+                            <small id="orderRCYLHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                     <div class="col ps-1 pe-1">
@@ -76,15 +78,16 @@
                     </div>
                     <div class="col-md-3 ps-1 pe-1">
                         <div class="form-group text-center p-0">
-                            <label for="largeInput">PRISM</label>
+                            <label for="largeInput">PRISM & DEC</label>
                             <input type="text" class="form-control form-control" id="orderRPRISM" value="" />
                         </div>
                     </div>
                     <div class="col-md-1 ps-1 pe-1" style="margin-right: -3.0rem !important;"></div>
                     <div class="col-md-1 ps-1 pe-1" style="margin-right: 1.1rem !important;">
-                        <div class="form-group text-center p-0">
+                        <div id="orderRQTYFormGroup" class="form-group text-center p-0">
                             <label for="largeInput">QTY</label>
                             <input type="text" class="form-control form-control" id="orderRQTY" value="" />
+                            <small id="orderRQTYHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                 </div>
@@ -94,13 +97,15 @@
                         <h3>L</h3>
                     </div>
                     <div class="col ps-1 pe-1">
-                        <div class="form-group text-center p-0">
+                        <div id="orderLSPHFormGroup" class="form-group text-center p-0">
                             <input type="text" class="form-control form-control" id="orderLSPH" value="" />
+                            <small id="orderLSPHHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                     <div class="col ps-1 pe-1">
-                        <div class="form-group text-center p-0">
+                        <div id="orderLCYLFormGroup" class="form-group text-center p-0">
                             <input type="text" class="form-control form-control" id="orderLCYL" value="" />
+                            <small id="orderLCYLHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                     <div class="col ps-1 pe-1">
@@ -125,8 +130,9 @@
                     </div>
                     <div class="col-md-1 ps-1 pe-1" style="margin-right: -3.0rem !important;"></div>
                     <div class="col-md-1 ps-1 pe-1" style="margin-right: 1.1rem !important;">
-                        <div class="form-group text-center p-0">
+                        <div id="orderLQTYFormGroup" class="form-group text-center p-0">
                             <input type="text" class="form-control form-control" id="orderLQTY" value="" />
+                            <small id="orderLQTYHelp" class="form-text text-danger d-none">This field is required.</small>
                         </div>
                     </div>
                 </div>
@@ -261,8 +267,6 @@
                                 <option value="AR HMC">AR HMC</option>
                                 <option value="AR NC">AR HMC USH</option>
                                 <option value="AR + SD Diamond">AR + SD Diamond</option>
-                                <option value="USH">USH</option>
-                                <option value="SD Diamond">SD Diamond</option>
                                 <option value="Premium HC">Premium HC</option>
                                 <option value="Premium HMC">Premium HMC</option>
                                 <option value="Premium USH">Premium USH</option>
@@ -347,7 +351,7 @@
                                 </select>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-lg btn-muted" data-bs-dismiss="modal">Close</button>
                                 <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
                             </div>
                         </div>

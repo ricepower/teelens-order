@@ -13,7 +13,7 @@ try {
             $design_idx = isset($_POST["design_idx"]) ? $_POST["design_idx"] : null;
             
             $sql = "SELECT * FROM order_index WHERE type_idx = '$type_idx'";
-            if ($design_idx) {
+            if ($type_idx !== "1" && $design_idx) {
                 $sql .= " AND design_idx = '$design_idx'";
             }
             $sql .= " ORDER BY sort ASC";
