@@ -337,45 +337,24 @@
                     </div>
                 </div>
             </div>
-            <?php
-                if ($_SESSION["auth"] === "0") {
-                    echo '
-                        <div class="modal-footer d-flex justify-content-between">
-                            <div class="col-md-3 d-flex align-items-center">
-                                <h5 class="form-label mb-0 me-2">State: </h5>
-                                <select class="form-select" id="orderState">
-                                    <option value="ordered">Ordered</option>
-                                    <option value="processing">Processing</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="canceled">Canceled</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-lg btn-muted" data-bs-dismiss="modal">Close</button>
-                                <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
-                            </div>
-                        </div>
-                    ';
-                } else {
-                    echo '
-                        <div class="modal-footer d-flex justify-content-between">
-                            <div class="col-md-3 d-flex align-items-center invisible">
-                                <h5 class="form-label mb-0 me-2">State: </h5>
-                                <select class="form-select" id="orderState">
-                                    <option value="ordered">Ordered</option>
-                                    <option value="processing">Processing</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="canceled">Canceled</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
-                            </div>
-                        </div>
-                    ';
-                }
-            ?>
+            <div class="modal-footer d-flex justify-content-between">
+                <div class="col-md-3 d-flex align-items-center <?php if ($_SESSION["auth"] !== "0") echo "invisible" ?>">
+                    <h5 class="form-label mb-0 me-2">State: </h5>
+                    <select class="form-select" id="orderState">
+                        <option value="ordered">Ordered</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                </div>
+                <div>
+                    <?php if ($_SESSION["auth"] === "0") echo '<button id="deleteButton" type="button" class="btn btn-lg btn-danger">Delete</button>' ?>
+                    <button type="button" class="btn btn-lg btn-muted" data-bs-dismiss="modal">Close</button>
+                    <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>
+                </div>
+            </div>
+
+            
             <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button id="saveButton" type="button" class="btn btn-lg btn-primary">Save</button>

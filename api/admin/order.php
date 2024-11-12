@@ -56,10 +56,12 @@ try {
                 `order_lens_spec`.`dia` AS `spec_dia`, 
                 `order_lens_spec`.`prism` AS `spec_prism`, 
                 `order_lens_spec`.`qty` AS `spec_qty`, 
-                `order_type`.`name` AS `type_name` 
+                `order_type`.`name` AS `type_name`,
+                `member`.`name` AS `member_name`
                 FROM `order`
                 LEFT JOIN `order_lens_spec` ON `order`.`idx` = `order_lens_spec`.`order_idx`
-                LEFT JOIN `order_type` ON `order`.`type_idx` = `order_type`.`idx`";
+                LEFT JOIN `order_type` ON `order`.`type_idx` = `order_type`.`idx`
+                LEFT JOIN `member` ON `order`.`member_idx` = `member`.`idx`";
 
             if (!empty($conditions)) {
                 $sql .= " WHERE " . implode(" AND ", $conditions);
@@ -87,11 +89,31 @@ try {
                 $rowArr['spec_prism'] = $row['spec_prism'];
                 $rowArr['spec_qty'] = $row['spec_qty'];
                 $rowArr['state'] = $row['state'];
+                $rowArr['member_name'] = $row['member_name'];
                 array_push($resultArr, $rowArr);
             }
             
             $result['data'] = $resultArr;
             echo json_encode($result);
+            exit();
+            break;
+        case "deleteOne":
+            $orderIdx = $_POST["orderIdx"];
+            mysqli_begin_transaction($conn);
+            $deleteOrderSql = "DELETE FROM `order` WHERE `idx` = " . $orderIdx;
+            $deleteOrderResult = mysqli_query($conn, $deleteOrderSql);
+
+            $deleteOrderLensSpecSql = "DELETE FROM `order_lens_spec` WHERE `order_idx` = " . $orderIdx;
+            $deleteOrderLensSpecResult = mysqli_query($conn, $deleteOrderLensSpecSql);
+
+            if ($deleteOrderResult && $deleteOrderLensSpecResult) {
+                mysqli_commit($conn);
+                echo http_response_code(200);
+            } else {
+                mysqli_rollback($conn);
+                header(trim("HTTP/1.0 500 InternalServerError"));
+                exit();
+            }
             exit();
             break;
         default:

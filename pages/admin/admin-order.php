@@ -76,6 +76,7 @@ include("../../utils/checkAdmin.php");
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
+                                                    <th>Customer</th>
                                                     <th>Name</th>
                                                     <th>Type</th>
                                                     <th>Coating</th>
@@ -189,6 +190,7 @@ include("../../utils/checkAdmin.php");
                 },
                 columns: [
                     { data: "idx" },
+                    { data: "member_name" },
                     { data: "name" },
                     { data: "type" },
                     { data: "coating" },
@@ -272,6 +274,7 @@ include("../../utils/checkAdmin.php");
                 modalMode = "UPDATE";
                 orderIdx = orderTable.row(this).data().idx;
                 resetModalForm();
+                $("#deleteButton").removeClass("invisible");
                 $.ajax({
                     url: "../../api/order.php",
                     type: "post",
@@ -729,6 +732,25 @@ include("../../utils/checkAdmin.php");
                 }                
             });
 
+            $("#deleteButton").click(function() {
+                if (confirm("Are you sure you want to delete this order?")) {
+                    $.ajax({
+                        url: "../../api/admin/order.php",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        flag: "deleteOne",
+                        orderIdx: orderIdx,
+                    },
+                    success: function(result) {
+                        alert("Order deleted successfully");
+                        $("#searchButton").click();
+                        $("#orderModal").modal('hide');
+                        },
+                    });
+                }
+            });
+
             function resetModalForm() {
                 $("#orderName").val("");
                 $("#orderDesign").empty();
@@ -826,6 +848,8 @@ include("../../utils/checkAdmin.php");
                 $("#orderLCYLHelp").addClass("d-none");
                 $("#orderLQTYFormGroup").removeClass("has-error has-feedback");
                 $("#orderLQTYHelp").addClass("d-none");
+
+                $("#deleteButton").addClass("invisible");
             }
 
             function disableModalForm() {

@@ -37,7 +37,7 @@ session_destroy();
                         <img src="assets/img/logo.png" />
                     </div>
                     <!-- <h1>TEE LENS</h1> -->
-                    <p>Welcome your visit.</p>
+                    <p>KOREA Eyecare</p>
                 </div>
             </div>
         </div>
