@@ -57,10 +57,16 @@ try {
                 `order_lens_spec`.`prism` AS `spec_prism`, 
                 `order_lens_spec`.`qty` AS `spec_qty`, 
                 `order_type`.`name` AS `type_name`,
+                `order_design`.`name` AS `design_name`,
+                `order_index`.`name` AS `index_name`,
+                `order_color`.`name` AS `color_name`,
                 `member`.`name` AS `member_name`
                 FROM `order`
                 LEFT JOIN `order_lens_spec` ON `order`.`idx` = `order_lens_spec`.`order_idx`
                 LEFT JOIN `order_type` ON `order`.`type_idx` = `order_type`.`idx`
+                LEFT JOIN `order_design` ON `order`.`design_idx` = `order_design`.`idx`
+                LEFT JOIN `order_index` ON `order`.`index_idx` = `order_index`.`idx`
+                LEFT JOIN `order_color` ON `order`.`color_idx` = `order_color`.`idx`
                 LEFT JOIN `member` ON `order`.`member_idx` = `member`.`idx`";
 
             if (!empty($conditions)) {
@@ -79,6 +85,9 @@ try {
                 $rowArr['idx'] = $row['idx'];
                 $rowArr['name'] = $row['name'];
                 $rowArr['type'] = $row['type_name'];
+                $rowArr['index_name'] = $row['index_name'];
+                $rowArr['design_name'] = $row['design_name'];
+                $rowArr['color_name'] = $row['color_name'];
                 $rowArr['coating'] = $row['coating'];
                 $rowArr['spec_LR'] = $row['spec_LR'];
                 $rowArr['spec_sph'] = $row['spec_sph'];

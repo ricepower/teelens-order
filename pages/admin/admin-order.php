@@ -78,7 +78,10 @@ include("../../utils/checkAdmin.php");
                                                     <th>No</th>
                                                     <th>Customer</th>
                                                     <th>Name</th>
-                                                    <th>Type</th>
+                                                    <!-- <th>Type</th> -->
+                                                    <th>Index</th>
+                                                    <th>Design</th>
+                                                    <th>Color</th>
                                                     <th>Coating</th>
                                                     <th>R&L</th>
                                                     <th>SPH</th>
@@ -192,7 +195,10 @@ include("../../utils/checkAdmin.php");
                     { data: "idx" },
                     { data: "member_name" },
                     { data: "name" },
-                    { data: "type" },
+                    // { data: "type" },
+                    { data: "index_name" },
+                    { data: "design_name" },
+                    { data: "color_name" },
                     { data: "coating" },
                     { data: "spec_LR" },
                     { data: "spec_sph" },

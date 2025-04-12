@@ -78,7 +78,10 @@ if (session_status() == PHP_SESSION_NONE) {
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Name</th>
-                                                    <th>Type</th>
+                                                    <!-- <th>Type</th> -->
+                                                    <th>Index</th>
+                                                    <th>Design</th>
+                                                    <th>Color</th>
                                                     <th>Coating</th>
                                                     <th>R&L</th>
                                                     <th>SPH</th>
@@ -191,7 +194,10 @@ if (session_status() == PHP_SESSION_NONE) {
                 columns: [
                     { data: "idx" },
                     { data: "name" },
-                    { data: "type" },
+                    // { data: "type" },
+                    { data: "index_name" },
+                    { data: "design_name" },
+                    { data: "color_name" },
                     { data: "coating" },
                     { data: "spec_LR" },
                     { data: "spec_sph" },

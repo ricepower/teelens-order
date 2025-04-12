@@ -165,7 +165,7 @@
                     </div>
                     <div class="col ps-1 pe-1">
                         <div class="form-group text-center ps-0 pe-0">
-                            <label for="largeInput">SEG.H(R)</label>
+                            <label for="largeInput">SEG.H</label>
                             <input type="text" class="form-control form-control" id="orderRSEG" value="" />
                         </div>
                     </div>
