@@ -357,6 +357,7 @@ try {
                 $rowArr['spec_add'] = $row['spec_add'];
                 $rowArr['spec_dia'] = $row['spec_dia'];
                 $rowArr['spec_prism'] = $row['spec_prism'];
+                $rowArr['memo'] = $row['memo'];
                 $rowArr['spec_qty'] = $row['spec_qty'];
                 $rowArr['state'] = $row['state'];
                 array_push($resultArr, $rowArr);

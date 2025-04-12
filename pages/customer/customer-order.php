@@ -90,6 +90,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                                     <th>ADD</th>
                                                     <th>DIA</th>
                                                     <th>PRISM</th>
+                                                    <th>MEMO</th>
                                                     <th>QTY</th>
                                                     <th>State</th>
                                                 </tr>
@@ -206,6 +207,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     { data: "spec_add" },
                     { data: "spec_dia" },
                     { data: "spec_prism" },
+                    { data: "memo" },
                     { data: "spec_qty" },
                     {
                         data: "state",

@@ -90,6 +90,7 @@ include("../../utils/checkAdmin.php");
                                                     <th>ADD</th>
                                                     <th>DIA</th>
                                                     <th>PRISM</th>
+                                                    <th>MEMO</th>
                                                     <th>QTY</th>
                                                     <th>State</th>
                                                 </tr>
@@ -207,6 +208,7 @@ include("../../utils/checkAdmin.php");
                     { data: "spec_add" },
                     { data: "spec_dia" },
                     { data: "spec_prism" },
+                    { data: "memo" },
                     { data: "spec_qty" },
                     {
                         data: "state",
